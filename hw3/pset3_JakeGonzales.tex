@@ -1,0 +1,383 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -*- LaTeX -*- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%**start of header
+\documentclass [10pt]{article}
+\usepackage{epsfig}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{esint}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage{xcolor}  
+% In case you need to adjust margins:
+\topmargin=-0.45in %
+\evensidemargin=0in %
+\oddsidemargin=0in %
+\textwidth=6.5in %
+\textheight=9.0in %
+\headsep=0.25in %
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand{\jg}[1]{{\color{blue} #1}}
+
+\begin{document}
+\begin{center}
+{\bf Homework Problems}\\
+Math 327, Winter 2025\\
+Due 11:30 pm, January 29, 2025
+\end{center}
+
+\begin{center}
+\jg{
+    Jake Gonzales}
+\end{center}
+
+{\bf Instructions:} Please include the full problem statement in your submission.
+All solutions must be written in legible handwriting
+or typed (in each case, the text should be of a reasonable size). Your solutions to
+all problems should be written in complete sentences, with proper grammatical
+structure.
+In all cases where external resources are consulted or used, proper citation must
+be given. In addition,
+you must provide information on collaboration with your submission: if you worked with others,
+or consulted anyone aside from the course staff, in preparing the solutions, their
+names should be
+listed; if you didn't work with anyone, please indicate this.
+If your solutions are not typed, you must scan your written solutions and submit
+the digital copy. When submitting problems through LaTex, the LaTex source file
+(.tex) must be included in the submission.
+
+
+\jg{
+\textbf{Collaborators: N/A }
+}
+
+\begin{enumerate}
+
+\item (Ross 7.4) Give examples of
+
+\jg{
+Recall, a rational number $r$ can be expressed by $r = \frac{m}{n}$ where $n, m \in \mathbb{Z}$ and $n \neq 0$. An irrational number does not satisfy this property, and therefore its decimal representation will be non-repeating and non-terminating.  
+}
+\begin{enumerate}
+\item A sequence $(x_n)_{n=1}^{\infty}$ of irrational numbers having a
+limit that is a rational number. 
+
+\jg{
+Consider the sequence $(x_n)_{n=1}^{\infty}$ where $x_n = \frac{1}{e^n}$. The number $e$ is a well-known irrational number. For any positive integer $n$, $e^n$ is also irrational. Furthermore, the reciprocal of an irrational number is irrational, meaning that $\frac{1}{e^n}$ is irrational. 
+
+Its clear to see that as $n$ grows larger, $e^n$ also grows very large, meaning that the sequence $\frac{1}{e^n}$ will go to 0, which is a rational number by definition. 
+}
+
+\item A sequence $(r_n)_{n=1}^{\infty}$ of rational numbers having a limit
+that is an irrational number.
+
+\jg{
+Consider the sequence $(r_n)_{n=1}^{\infty}$ where $r_n = (1+\frac{1}{n})^n$. This was given as an example in the book as a sequence that converges to the irrational number $e$. We can observe for finite $n$, the sequence $r_n = (1+\frac{1}{n})^n$ is rational. This is because inside the parenthesis we have $(1+ \frac{1}{n})$ and since $n$ is a positive integer this is a rational number. Also the integer exponent of a rational number i.e. $r^n$ is the product of two rational numbers which is a rational number.
+
+For some examples we look at $n=1$ which gives $(1+\frac{1}{1})^1 = 2, n=2$ gives $(1+\frac{1}{2})^2 = (\frac{3}{2})^2 = \frac{9}{4}, n=3$ gives $(1+\frac{1}{3})^3 = (\frac{4}{3})^3 = \frac{64}{27}$, etc. 
+
+Looking at example 1 from section 7 of the book the approximate this sequence to $r_{1000} = 2.7169$ and explain that this sequence does in fact converge to $e$. 
+}
+\end{enumerate}
+\clearpage
+
+\item (Ross 8.1) Prove the following:
+\begin{enumerate}
+\item $\lim_{n \to \infty} \frac{(-1)^n}{n}=0$
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+Following definition 7.1 from the textbook, for some arbitrary $\epsilon > 0$, we want to show $| \frac{(-1)^n}{n} - 0 | < \epsilon$. Thus we have $| \frac{(-1)^n}{n}| < \epsilon$. We can rewrite this as $|(-1)^n| \cdot |\frac{1}{n}|$. Notice $|(-1)^n| = 1$ for any integer $n$, then we can write $1 \cdot |\frac{1}{n}|$. Hence, since $n \geq 0$, we want to show that $\frac{1}{n} < \epsilon$. By multiplying both sides by $n$ and dividing both sides $\epsilon$, we get $\frac{1}{\epsilon} < n$. 
+
+Thus we see $n > \frac{1}{\epsilon}$ implies $|\frac{(-1)^n}{n} - 0 | < \epsilon$. Suggesting that we should set $N = \frac{1}{\epsilon}$. \\
+
+\textbf{\underline{Formal Proof.}}
+
+Let $\epsilon > 0$. Let $N = \frac{1}{\epsilon}$. Then $n > N$ implies $|\frac{(-1)^n}{n} - 0 | < \epsilon = \frac{1}{n} < \epsilon$. \\
+}
+\item $\lim_{n \to \infty} \frac{1}{n^{1/3}}=0$
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+For some arbitrary $\epsilon > 0$, we want to show that $|\frac{1}{n^{1/3}} - 0| < \epsilon$. Thus we have $\frac{1}{n^{1/3}} < \epsilon$. Multiplying by ${n^{1/3}}$ and dividing by $\epsilon$ gives $\frac{1}{\epsilon} < {n^{1/3}}$. Finally, cubing both sides gives $\frac{1}{\epsilon^3} < n$. Thus we see $n > 1/\epsilon^3$ implies $|\frac{1}{n^{1/3}} - 0| < \epsilon$. Suggesting we set $N = 1/\epsilon^3$. \\
+
+\textbf{\underline{Formal Proof.}}
+
+Let $\epsilon > 0$. Let $N = 1/\epsilon^3$. Then $n > N$ implies $|\frac{1}{n^{1/3}} - 0| < \epsilon$. \\
+}
+\item $\lim_{n \to \infty} \frac{2n-1}{3n+2}=\frac{2}{3}$
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+For some arbitrary $\epsilon > 0$, we want to show that $|\frac{2n-1}{3n+2}=\frac{2}{3}| < \epsilon$. To subtract the inside of the absolute value we can cross multiply to find a common denominator, so that we get $|\frac{3(2n-1) - 2(3n+2)}{3(3n+2)}| < \epsilon$. Simplifying gives $|\frac{-7}{3(3n+2)}| < \epsilon$ or after applying the absolute values $|\frac{7}{3(3n+2)}| < \epsilon$. Multiplying by $(3n+2)$ and dividing by $\epsilon$ gives $\frac{7}{3 \epsilon} < 3n + 2$. So finally we have $\frac{7}{9 \epsilon} - \frac{2}{3} < n$. Thus we see $n > \frac{7}{9 \epsilon} - \frac{2}{3}$ implies $|\frac{2n-1}{3n+2}=\frac{2}{3}| < \epsilon$, suggesting we set $N = \frac{7}{9 \epsilon} - \frac{2}{3}$. \\
+
+\textbf{\underline{Formal Proof.}}
+
+Let $\epsilon > 0$. Let $N = \frac{7}{9 \epsilon} - \frac{2}{3}$. Then $n > N$ implies $|\frac{2n-1}{3n+2}-\frac{2}{3}| < \epsilon$. \\
+}
+\item $\lim_{n \to \infty} \frac{n+6}{n^2-6}=0$
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+For some arbitrary $\epsilon > 0$, we want to show that $|\frac{n+6}{n^2-6} - 0| < \epsilon$. Thus we have $|\frac{n+6}{n^2-6}| < \epsilon$. Since for $n > \sqrt{6}$ we have $(n^2 - 6)>0$, we can drop the absolute values, thus we have $\frac{n+6}{n^2-6} < \epsilon$. Here, it is difficult to isolate $n$. Recall, we need to find some $N$ such that $n>N$ implies $|\frac{n+6}{n^2-6}| < \epsilon$, but we do not need to find the least such $N$. We will do this by finding an upper bound for $\frac{n+6}{n^2 - 6}$. For $n>2$, we have $n^2 - 6 > \frac{n^2}{2}$, so 
+\begin{align*}
+    \frac{n+6}{n^2-6} < \frac{n+6}{\frac{n^2}{2}} = \frac{2(n+6)}{n^2}, 
+\end{align*}
+which by further simplifying gives $\frac{2(n+6)}{n^2} = \frac{2}{n} + \frac{12}{n^2}$. For $n>1$, $\frac{12}{n} > \frac{12}{n^2}$, so 
+\begin{align*}
+    \frac{2}{n} + \frac{12}{n^2} < \frac{2}{n} + \frac{12}{n} = \frac{14}{n}. 
+\end{align*}
+Thus we have $\frac{n+6}{n^2 - 6} < \frac{14}{n}$, hence we want $\frac{14}{n} < \epsilon$, implying $n > \frac{14}{\epsilon}$. Therefore, we choose $N = \max (\sqrt{6}, \frac{14}{\epsilon})$.
+
+\textbf{\underline{Formal Proof.}}
+Let $\epsilon>0$. Let $N = \max (\sqrt{6}, \frac{14}{\epsilon})$. Then for $n > N$, we have $|\frac{n+6}{n^2-6}-0| < \epsilon$.
+}
+
+\end{enumerate}
+\clearpage
+
+\item (Ross 8.2) Determine the limits of the following sequences, and then prove
+your claims.
+\begin{enumerate}
+\item $a_n = \frac{n}{n^2+1}$
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+Suppose we rewrite the sequence $a_n = \frac{n}{n^2+1}$ as $a_n = \frac{1}{n + \frac{1}{n}}$. Then, as $n$ grows large, $\frac{1}{n}$ is very small so it is reasonable to conclude that $\lim a_n = 0$. Also, this is mentioned as a valid method in Example 2 on page 35 of the textbook. 
+
+Let us now prove that $\lim a_n = 0$. Following a similar approach from problem 2, we want to show for an arbitrary $\epsilon > 0$ that $|\frac{n}{n^2 + 1} - 0| < \epsilon$ for large enough $n$. Or that $\frac{n}{n^2 + 1} < \epsilon$. Note that for $n \geq 1$, $n^2 + 1 > n^2$, so 
+\begin{align*}
+    \frac{n}{n^2 + 1} < \frac{n}{n^2} = \frac{1}{n}.
+\end{align*}
+Thus, it suffices to show that $\frac{1}{n} < \epsilon$, which implies $n > \frac{1}{\epsilon}$. Therefore, we choose $N = \frac{1}{\epsilon}$. \\
+
+\textbf{\underline{Formal Proof.}}
+
+Let $\epsilon > 0$. Let $N = \frac{1}{\epsilon}$. Then for all $n>N$, we have $|\frac{n}{n^2+1} - 0| < \epsilon$.
+}
+\item $b_n = \frac{7n-19}{3n+7}$
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+We can rewrite the sequence $b_n$ as $\frac{7 - (19/n)}{3 + (7/n)}$, therefore we can conclude that $\lim b_n = \frac{7}{3}$. To subtract, we will find a common denominator through cross multiplying, so
+\begin{align*}
+    \left|\frac{7n - 19}{3n+7} - \frac{7}{3}\right| = \left|\frac{3(7n-19) - 7(3n+7)}{3(3n+7)}\right|.
+\end{align*}
+Simplifying, 
+\begin{align*}
+    \left|\frac{3(7n-19) - 7(3n+7)}{3(3n+7)}\right| = \left|\frac{21n - 57 - 21n - 49}{9n + 21}\right| = \left|\frac{-106}{9n+21}\right|. 
+\end{align*}
+Since $(9n+21) > 0$, we drop the absolute value to get
+\begin{align*}
+    \frac{106}{9n+21} < \epsilon.
+\end{align*}
+To isolate $n$ we can rearrange to get $106 < \epsilon (9n+21)$ or $106 < 9\epsilon n + 21\epsilon$, which implies $n > \frac{106 - 21\epsilon}{9\epsilon}$. Thus, we choose $N = \frac{106 - 21\epsilon}{9\epsilon}$. \\
+
+\textbf{\underline{Formal Proof.}}
+
+Let $\epsilon > 0$. Let $N = \frac{106 - 21\epsilon}{9\epsilon}$. Then $n > N$ implies $|\frac{7n-19}{3n+7} - \frac{7}{3}| < \epsilon$. 
+ 
+}
+
+\item $c_n = \frac{4n+3}{7n-5}$
+
+\jg{
+\textbf{\underline{Discussion.}}
+We can rewrite the sequence $c_n$ as $\frac{4 + (3/n)}{7 - (5/n)}$, therefore we can conclude that $\lim c_n = \frac{4}{7}$. To prove this, we want to show that for an arbitrary $\epsilon > 0$, we have $|\frac{4n+3}{7n-5} - \frac{4}{7}| < \epsilon$. To subtract, we can find a common denominator through cross multiplying, then we simplify after to get
+\begin{align*}
+    \left|\frac{4n+3}{7n-5}-\frac{4}{7}\right| 
+    &= \left|\frac{7(4n+3)-4(7n-5)}{7(7n-5)}\right| \\
+    &= \left|\frac{28n+21-28n+20}{49n-35}\right| \\
+    &= \left|\frac{41}{49n-35}\right|.
+\end{align*}
+
+Since $(49n-35) > 0$, we drop the absolute value to get
+\begin{align*}
+    \frac{41}{49n-35}<\epsilon.
+\end{align*}
+To isolate $n$, we can rearrange to get $41 < \epsilon(49n-35)$ or $41 < 49\epsilon n-35\epsilon$, which implies $n > \frac{41+35\epsilon}{49\epsilon}$. Thus, we can choose $N = \frac{41+35\epsilon}{49\epsilon}$. \\
+
+\textbf{\underline{Formal Proof.}}
+
+Let $\epsilon > 0$. Let $N = \frac{41+35\epsilon}{49\epsilon}$. Then $n > N$ implies $|\frac{4n+3}{7n-5} - \frac{4}{7}| < \epsilon$. 
+}
+\item $d_n = \frac{2n+4}{5n+2}$
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+We can rewrite the sequence $d_n$ as $\frac{2 + (4/n)}{5 + (2/n)}$, therefore we can conclude that $\lim d_n = \frac{2}{5}$. To prove this, we want to show that for an arbitrary $\epsilon > 0$, we have $|\frac{2n+4}{5n+2} - \frac{2}{5}| < \epsilon$. To subtract, we can find a common denominator through cross multiplying, then we simplify after to get
+\begin{align*}
+    \left|\frac{2n+4}{5n+2}-\frac{2}{5}\right| 
+    &= \left|\frac{5(2n+4)-2(5n+2)}{5(5n+2)}\right| \\
+    &= \left|\frac{10n+20-10n-4}{25n+10}\right| \\
+    &= \left|\frac{16}{25n+10}\right|.
+\end{align*}
+Since $(25n+10) > 0$, we drop the absolute value to get
+\begin{align*}
+    \frac{16}{25n+10}<\epsilon.
+\end{align*}
+To isolate $n$, we can rearrange to get $16 < \epsilon(25n+10)$ or $16 < 25\epsilon n+10\epsilon$, which implies $n > \frac{16-10\epsilon}{25\epsilon}$. Thus, we can choose $N = \frac{16-10\epsilon}{25\epsilon}$. \\
+
+\textbf{\underline{Formal Proof.}}
+
+Let $\epsilon > 0$. Let $N = \frac{16-10\epsilon}{25\epsilon}$. Then $n > N$ implies $|\frac{2n+4}{5n+2} - \frac{2}{5}| < \epsilon$.
+}
+\item $s_n = \frac{1}{n}\sin n$
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+The limit can be looked at in two parts. First lets look at the sequence $a_n = \frac{1}{n}$, which clearly as $n$ grows larger, the sequence $a_n$ goes to 0. Also, $b_n = \sin n$ is well known to oscillate in a bounded period between $1$ and $-1$. However, the sequence $b_n$ ensures that $s_n$ tends towards $0$ as $n$ grows larger. Also, by problem 4 of this homework, we know that this limit does in fact go to zero. 
+
+We want to show that for any $\epsilon > 0$, we have $|\frac{1}{n} \sin n - 0| < \epsilon$ for large enough $n$. Since $|\sin n| \leq 1$, we have that $|\frac{1}{n} \sin n | \leq \frac{1}{n}$. Thus, $|\frac{1}{n} \sin n | < \epsilon$ whenever $\frac{1}{n} < \epsilon$, or $n > \frac{1}{\epsilon}$. Thus, choose $N = \frac{1}{\epsilon}$. \\
+
+\textbf{\underline{Formal Proof.}}
+
+Let $\epsilon > 0$. Let $N = \frac{1}{\epsilon}$. Then for $n > N$, we have $|\frac{1}{n}\sin n - 0| < \epsilon$. 
+
+}
+ 
+\end{enumerate}
+\clearpage
+\item (Ross 8.4) Let $(t_n)_{n=1}^{\infty}$ be a bounded sequence, and let $
+(s_n)_{n=1}^{\infty}$ be a sequence such that $\lim_{n\to \infty} s_n= 0$. Prove
+that $\lim_{n \to \infty} s_nt_n= 0$.
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+If the sequence $(t_n)$ is bounded then that means there exits $M > 0$ such that $|t_n| \leq M$ for all $n$. Since $\lim s_n = 0$, then for any $\epsilon > 0$, there exits an $N$ such that for all $n > N$, $|s_n| < \epsilon$. We want to show that $|s_n t_n|$ becomes small for large $n$, meaning $\lim s_n t_n = 0$. \\
+
+\textbf{\underline{Formal Proof.}}
+
+Since $(t_n)$ is bounded, there exists a constant $M > 0$ such that $|t_n| \leq M$ for all $n$. Since $\lim s_n = 0$, for any $\epsilon > 0$, there exists an $N$ such that for all $n > N$ we have $|s_n| < \frac{\epsilon}{M}$. Now consider $s_n t_n$. We can write $|s_n t_n| = |s_n| \cdot |t_n|$. Using the fact that $|t_n| \leq M$ and $|s_n| < \frac{\epsilon}{M}$, then 
+\begin{align*}
+    |s_n t_n| < M \cdot \frac{\epsilon}{M} = \epsilon. 
+\end{align*}
+Therefore, for any $\epsilon > 0$, there exits an $N$ such that for all $n > N, |s_n t_n| < \epsilon$. By definition, this means that $\lim s_n t_n = 0$. 
+}
+
+\clearpage
+\item (Ross 8.5)
+\begin{enumerate}
+\item Consider three sequences $(a_n)_{n=1}^{\infty}$, $(b_n)_{n=1}^{\infty}$, and $(s_n)_{n=1}^{\infty}$ such that
+\begin{align*}
+a_n \leq s_n \leq b_n
+\end{align*}
+for all $n$ and $\lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = x$.
+Prove that $\lim_{n \to \infty} s_n= x.$
+
+\jg{
+Let $\epsilon > 0$. We want to prove that $\lim s_n = x$ which means that there exists some $N$ that implies $|s_n - x| < \epsilon$ for all $n > N$. Expanding the absolute value means showing that $x - \epsilon < s_n < x + \epsilon$. We also know from the problem definition that $a_n \leq s_n \leq b_n$. Lets now look at the limit of those sequences. 
+
+We know from the problem statement that $\lim a_n = x$ and $\lim b_n = x$. By definition, this means that there exists $N_1$ such that $|a_n - x| < \epsilon$ for $n > N_1$ and similarly that there exits $N_2$ such that $|b_n - x| < \epsilon$ for $n > N_2$. Expanding the absolute value gives us that $n > N_1$ implies $x - \epsilon < a_n$ and that $n > N_2$ implies $b_n < x + \epsilon$. 
+
+Now, if we consider the $n$ such that $n > \max(N_1, N_2)$ then this implies $x - \epsilon < a_n \leq s_n \leq b_n < x + \epsilon$ and hence $|s_n - x| < \epsilon$. 
+}
+
+\item Suppose $(s_n)_{n=1}^{\infty}$ and $(t_n)_{n=1}^{\infty}$ are
+sequences such that $|s_n|\leq t_n$ for all $n$ and $\lim_{n \to \infty} t_n=0$.
+Prove $\lim_{n \to \infty} s_n =0.$
+
+\jg{
+We are given that $\lim_{n \to \infty} t_n=0$. We can conclude that $\lim_{n \to \infty} (-t_n)=0$, since multiplying by a constant $(-1)$ doesn't change the limit of the sequence. Then since we are given $|s_n| \leq t_n$ or $-t_n \leq s_n \leq t_n$, we can apply part (a) directly to show that $\lim s_n = 0$.  
+}
+\end{enumerate}
+\clearpage
+
+\item Prove that if $s_n = (-1)^n$, then $\lim_{n \to \infty} s_n$ does not exist.
+
+\jg{
+\textbf{\underline{Discussion.}}
+
+We want to show that if $s_n  = (-1)^n$, then $\lim_{n \to \infty} s_n$ does not converge to some number $s$, i.e., the limit does not exist. Intuitively, we can see that the limit will alternate between the values $1$ and $-1$ for all integers $n \geq 0$. We want to show that there is no number $s$, even if its $1$ or $-1$, will serve as a limit for this sequence, since the sequence will always remain $1$ away from $s$. Specifically, this means showing that $|(-1)^n - s| < \epsilon$ will not hold for $\epsilon = 1$ and for all $n > N$. We can show this by contradiction.  \\
+
+\textbf{\underline{Formal Proof.}}
+
+Suppose, for the sake of contradiction, that $\lim_{n \to \infty} (-1)^n = s$ for some number $s$. Let $\epsilon = 1$. Therefore, there exists some $N$ such that 
+\begin{align*}
+    n > N \quad \text{implies} \quad |(-1)^n - s| < 1.
+\end{align*}
+Considering both an even and odd $n > N$, we get the following 
+\begin{align*}
+    |1-s| < 1 \quad \text{and} \quad |-1 - s | < 1. 
+\end{align*}
+We want to relate these two inequalities. Let's consider the distance between $1$ and $-1$ as $|1-(-1) = |2| = 2$. Using the triangle inequality, we can rewrite $|1-(-1)|$ as 
+\begin{align*}
+    |1-(-1)| = |1-s + s - (-1) \leq |1-s| + |s - (-1)|.
+\end{align*}
+Substituting the inequalities $|1-s| < 1$ and $|s - (-1)| < 1$ gives 
+\begin{align*}
+    2 = |1-(-1)| \leq |1-s| + |s-(-1)| < 1 + 1 = 2. 
+\end{align*}
+This is certainly not true. Therefore, our assumption that $\lim_{n \to \infty} (-1)^n = s$ is false, and thus the sequence $(-1)^n$ does not converge. 
+}
+\clearpage
+
+\item (Ross 8.9)
+Let $(s_n)_{n=1}^{\infty}$ be a sequence that converges.
+\begin{enumerate}
+\item Show that if $s_n \geq a$ for all but finitely many $n$, then $\lim s_n \geq a$.
+
+\jg{
+Since the sequence $s_n$ converges we can let $\lim s_n = s$. Therefore, for some $\epsilon > 0$, there exists $N$ such that $n > N$, that implies $|s_n - s| < \epsilon$. From the problem definition, if $s_n \geq a$ for all but finitely many $n$, this means that there exists $N_1 \in \mathbb{N}$ such that for all $n > N_1$, we have $s_n \geq a$. 
+
+Let's suppose, for the sake of contradiction, that $s < a$. Let $\epsilon = a - s$. Since $s < a$, we have that $\epsilon > 0$. Then, we have for $\epsilon = a - s$, there exists $N_2$ such that for all $n > N_2$, $|s_n - s | < \epsilon$. Expanding the absolute values gives us $s - \epsilon < s_n < s + \epsilon$. Substituting $\epsilon = a - s$, gives $s - (a - s) < s_n < s + (a - s)$. Simplifying gives $2s - a < s_n < a$. 
+
+From the given problem statement, we have that for all $n > N_1$, we have $s_n \geq a$. However from the second part we have for all $n > N_2$ we have $s_n < a$. If we choose $N = \max(N_1, N_2)$, then for all $n > N$ we will have $s \geq a$ and $s < a$, which is a contradiction since both cannot hold. Therefore, our assumption was false and we can conclude that if $s_n \geq a$ for all finitely many $n$, then $\lim s_n = s \geq a$. 
+}
+
+\item Show that if $s_n \leq b$ for all but finitely many $n$, then $\lim
+s_n \leq b$.
+
+\jg{
+We will follow a similar structure to the above. 
+
+Since the sequence $s_n$ converges we can let $\lim s_n = s$. Therefore, for some $\epsilon > 0$, there exists $N$ such that $n > N$, that implies $|s_n - s| < \epsilon$. From the problem definition, if $s_n \leq b$ for all but finitely many $n$, this means that there exists $N_1 \in \mathbb{N}$ such that for all $n > N_1$, we have $s_n \leq b$. 
+
+Let's suppose, for the sake of contradiction, that $s > b$. Let $\epsilon = s - b$. Since $s > b$, we have that $\epsilon > 0$. Then, we have for $\epsilon = s - b$, there exists $N_2$ such that for all $n > N_2$, $|s_n - s | < \epsilon$. Expanding the absolute values gives us $s - \epsilon < s_n < s + \epsilon$. Substituting $\epsilon = s - b$, gives $s - (s - b) < s_n < s + (s - b)$. Simplifying gives $b < s_n < 2s - b$. 
+
+From the given problem statement, we have that for all $n > N_1$, we have $s_n \leq b$. However from the second part we have for all $n > N_2$ we have $s_n > b$. If we choose $N = \max(N_1, N_2)$, then for all $n > N$ we will have $s \leq b$ and $s > b$, which is a contradiction since both cannot hold. Therefore, our assumption was false and we can conclude that if $s_n \leq b$ for all finitely many $n$, then $\lim s_n = s \leq b$.
+}
+
+\item Conclude if all but finitely and $s_n$ belong to $[a, b]$, then $\lim
+s_n$ belongs to the interval $[a, b].$
+
+\jg{
+From parts (a) and (b), if $s_n$ belongs to $[a,b]$ for all but finitely many $n$, then we showed this implies $\lim s_n \geq a_n$ and $\lim s_n \leq b$, and thus $\lim s_n$ belongs to the interval $[a,b]$. 
+}
+\end{enumerate}
+\end{enumerate}
+
+\clearpage
+\begin{center}
+\vspace*{\fill}
+{\Large End of Homework}
+\vspace*{\fill}
+\end{center}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,288 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -*- LaTeX -*- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%**start of header
+\documentclass [10pt]{article}
+\usepackage{epsfig}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{esint}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage{xcolor}  
+% In case you need to adjust margins:
+\topmargin=-0.45in %
+\evensidemargin=0in %
+\oddsidemargin=0in %
+\textwidth=6.5in %
+\textheight=9.0in %
+\headsep=0.25in %
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand{\jg}[1]{{\color{blue} #1}}
+
+\begin{document}
+\begin{center}
+{\bf Homework Problems}\\
+Math 327, Winter 2025\\
+Due 11:30 pm, January 15, 2025
+\end{center}
+
+\begin{center}
+\jg{
+    Jake Gonzales}
+\end{center}
+
+{\bf Instructions:} Please write your solution to each problem on a separate page,
+and please include the
+full problem statement at the top of the page. All solutions must be written in
+legible handwriting
+or typed (in each case, the text should be of a reasonable size).
+Your solutions to all problems should be written in complete sentences, with proper
+grammatical
+structure.
+
+In all cases where external resources are consulted or used, proper citation must
+be given. In addition,
+you must provide information on collaboration with your submission: if you worked
+with others,
+or consulted anyone aside from the course staff, in preparing the solutions, their
+names should be
+listed; if you didn't work with anyone, please indicate this.
+If your solutions are not typed, you must scan your written solutions and submit
+the digital copy. When submitting problems through LaTex, the LaTex source file
+(.tex) must be included in the submission. \\
+
+\jg{
+\textbf{Collaborators: N/A }
+}
+
+\begin{enumerate}
+
+\item (Ross 1.8, (a)) Prove that $n^2> n+1$ for all integers $n\geq 2$.
+
+\jg{
+We first define the extension of mathematical induction: a list $P_m, P_{m+1}, \cdots$ is true provided (i) $P_m$ is true, (ii) $P_{n+1}$ is true whenever $P_n$ is true and $n \geq m$. 
+
+For this problem, we set $m = 2$. We define our $n$th proposition as 
+\begin{align*}
+    P_n : n^2 > n+1 \quad \text{for all integers} \quad  n \geq 2.  
+\end{align*}
+This asserts the basis of induction as $P_m = P_2 = 2^2 > 2 + 1$, which is clearly true. Suppose $P_n$ is true for any integer $n \geq 2$. We now want to verify $P_{n+1}$, 
+\begin{align*}
+    P_{n+1} : (n+1)^2 > (n+1) + 1.
+\end{align*}
+Expanding and combining terms we get 
+\begin{align*}
+    n^2 + 2n + 1 > n + 2. 
+\end{align*}
+We now substitute in our inductive hypothesis 
+\begin{align*}
+    (n+1)^2 &= n^2 + 2n + 1 \\
+            &> (n+1) + 2n + 1 \\
+            &= 3n + 2 \\
+            &> n + 2 
+\end{align*}
+with the last inequality holding true since $n \geq 2$. Thus by mathematical induction we have proven $P_{n+1}$ holds for all integers $n \geq 2$, completing the proof. 
+}
+\clearpage
+\item (Ross 1.8, (b)) Prove that $n! > n^2$ for $n\geq 4$.
+
+\jg{
+For this problem, we set $m=4$. We define our $n$th proposition as 
+\begin{align*}
+    P_n : n! > n^2 \quad \text{for all integers} \quad n \geq 4. 
+\end{align*}
+This asserts the basis of induction as $P_m = P_4 = 4! > 4^2 \implies 4 \cdot 3 \cdot 2 \cdot 1 > 16$, which is equivalent to $24 > 16$. Thus we can determine that our basis of induction is true. Suppose $P_n$ is true for any integer $n \geq 4$. We now want to verify $P_{n+1}$, 
+\begin{align*}
+    P_{n+1} : (n + 1)! > (n+1)^2.
+\end{align*}
+Notice $(n+1)! = (n+1) \cdot n!$. Let's now substitute in our inductive hypothesis
+\begin{align*}
+    (n+1)! &= (n+1) \cdot n! \\
+           &> (n+1) \cdot n^2 \quad \text{by the inductive hypothesis $n! > n^2$} \\
+           &= n^3 + n^2  \\
+           &> n^2 + 2n + 1 \quad \text{since $n^3 > 2n + 1$ for all $n \geq 4$} \\
+           &= (n+1)^2. 
+\end{align*}
+Thus by mathematical induction we have proven $P_{n+1}$ holds for all integers $n\geq4$, completing the proof. 
+
+}
+\clearpage
+\item (Ross 2.4) Show that $(5-3^{\frac{1}{2}})^{\frac{1}{3}}$ is not a rational
+number.
+
+\jg{
+Note: Below we reference and use the same structure as Example 5 from the textbook.
+
+We can write the expression $a = \sqrt[3]{5 - \sqrt{3}}$ which means $a^3 = 5 - \sqrt{3}$ or $a^3 - 5 = \sqrt{3}$ so that $(a^3 - 5)^2 = 3$. Therefore, we have $(a^3 - 5)^2 - 3= 0$ or expanded as $a^6 - 10a^3 + 22 = 0$. So $\sqrt[3]{5 - \sqrt{3}}$ is a solution of $a^6 - 10a^3 + 22 = 0$. By Corollary 2.3 from the textbook, the only possible rational solutions are $\pm 1, \pm 2, \pm 11, \pm 22$. When $x = 1$, the left hand side equals 13, and for $x = -1$ the left hand side equals 33. For $x = 2$, the left hand side equals 6, and when $x = -2$, it equals 166. For the larger values, we can observe that a = $\sqrt[3]{5 - \sqrt{3}}$ is clearly less than 2 since 5 - $\sqrt{3} < 4$, so its cube root must be less than 2. 
+
+We can make this clear by observing 
+\begin{align*}
+    11^6 - 10(11)^3 + 22 = 11(11^5 - 10 \cdot 11^2 + 2) \neq 0
+\end{align*}
+since the term in the parenthesis cannot be zero it is some multiple of 11 which is clearly not equal to 0. Therefore, since $\sqrt[3]{5 - \sqrt{3}}$ satisfies this equation but none of the possible rational solutions do, $\sqrt[3]{5 - \sqrt{3}}$ must be irrational.
+}
+\clearpage
+\item (Ross 3.5)
+\begin{enumerate}
+\item Show that $|b| \leq a$ if and only if $-a \leq b \leq a.$
+
+\jg{
+First, we look to prove the forward direction that $|b| \leq a \implies -a \leq b \leq a$. Suppose $|b| \leq a$, then $-a \leq - |b|$. Therefore, its clear to see that $-a \leq -|b| \leq b \leq |b| \leq a$, where $-|b| \leq b \leq |b|$ holds by the definition of absolute values (definition 3.3 from the text). Thus, we have shown that $-a \leq b \leq a$. 
+
+Now lets look at the reverse direction. Suppose $-a \leq b \leq a$. If $b \geq 0$, then $|b| = b \leq a$. If $b < 0$, then $|b| = -b \leq a$, which holds by Theorem 3.2 (i) from the textbook since we know by assumption that $-a \leq b$. Thus we have shown that $|b| \leq a$. \\
+}
+\item Prove that $||a|-|b|| \leq |a-b|$ for all $a, b \in \mathbb{R}$.
+
+\jg{
+From part (a), we showed that it suffices to prove $-|a-b| \leq |a| - |b| \leq |a-b|$. 
+
+Consider $|a|$, then add and subtract $b$ to get $|a| = |a + (-b + b)| = |(a-b) + b|$. Let's look at the second inequality $|a| - |b| \leq |a-b|$. We have $|a| = |(a-b) + b|$. By the triangle inequality $|(a-b) + b| + b \leq |a-b| + |b|$. So $|a| \leq |a-b| + |b|$. Subtracting $|b|$ from both sides, we get $|a| - |b| \leq |a-b|$. 
+
+Now consider $|b|$, then add and subtract $a$ to get $|b| = |b + (-a + a)| = |(b-a) + a|$. Let's now look at the first inequality $-|a-b| \leq |a| - |b|$. By the triangle inequality $|(b-a) + a| \leq |b-a| + |a| = |a-b| + |a|$. So $|b| \leq |a-b| + |a|$. Subtract $|b|$ from both sides: $0 \leq |a-b| + |a| - |b|$. Subtract $|a-b|$ from both sides: $-|a-b| \leq |a| - |b|$.
+
+This completes the proof since we have shown both inequalities $-|a-b| \leq |a| - |b| \leq |a-b|$. 
+}
+\end{enumerate}
+\clearpage
+\item (Ross 3.6)
+\begin{enumerate}
+\item Prove that $|a+b+c| \leq |a|+|b|+|c|$ for all $a, b, c \in \mathbb{R}
+$.
+
+\jg{
+We will use the hint from the textbook and apply the triangle inequality twice. 
+
+First we group $(a+b)$. Then we apply the triangle inequality to get
+\begin{align*}
+    |(a+b) + c| \leq |a + b| + |c|.
+\end{align*}
+Then separately we apply the triangle inequality to $(a+b)$, so 
+\begin{align*}
+    |a+b| \leq |a| + |b|. 
+\end{align*}
+Putting this together we get 
+\begin{align*}
+    |a+b+c| = |(a+b) + c| \leq |a+b| +|c| \leq (|a| + |b|) + |c| = |a| + |b| + |c|. 
+\end{align*}
+
+Therefore, we have proven that $|a+b+c| \leq |a|+|b|+|c|$ for all $a, b, c \in \mathbb{R}$. \\
+}
+
+\item Use induction to prove
+\begin{align*}
+|a_1+a_2 + \cdots + a_n| \leq |a_1|+|a_2|+ \cdots + |a_n|
+\end{align*}
+for $n$ numbers $a_1, a_2, ..., a_n$.
+
+\jg{
+We define our nth proposition as 
+\begin{align*}
+    P_n : |a_1+a_2 + \cdots + a_n| \leq |a_1|+|a_2|+ \cdots + |a_n| \quad \text{for $n$ numbers $a_1, a_2, ..., a_n$}.
+\end{align*}
+The basis for induction $P_1 = |a_1| \leq |a_1|$ is trivially true by equality and $P_2 = |a_1 + a_2| \leq |a_1| + |a_2|$ is true by the triangle inequality. Suppose $P_n$ is true for some $n \geq 2$, we have
+\begin{align*}
+    |a_1 + a_2 +, \cdots, + a_n| \leq |a_1| + |a_2| + \cdots + |a_n|.
+\end{align*}
+Now we want to prove its true for $P_{n+1}$. If we group the first $n$ terms we have 
+\begin{align*}
+    |(a_1 + a_2 +, \cdots, + a_n) + a_{n+1}| \leq |a_1 + a_2 + \cdots + a_n| + |a_{n+1}|. 
+\end{align*}
+Using our inductive hypothesis on the first term 
+\begin{align*}
+    |a_1 + a_2 + \cdots + a_n| + |a_{n+1} | \leq (|a_1| + |a_2| + \cdots + |a_n|) + |a_{n+1}| = |a_1| + |a_2| + \cdots + |a_n| + |a_{n+1}|. 
+\end{align*}
+Therefore, by the principle of mathematical induction we have proven that $|a_1+a_2 + \cdots + a_n| \leq |a_1|+|a_2|+ \cdots + |a_n|$ for all $n \geq 1$ and for all numbers $a_1, a_2, ..., a_n$. 
+}
+\end{enumerate}
+\clearpage
+\item (Ross 3.7)
+\begin{enumerate}
+\item Show that $|b|< a$ if and only if $-a < b < a.$
+
+\jg{
+We will follow very closely the answer to 3.5 part (a). 
+
+First, we look to prove the forward direction that $|b| < a \implies -a < b < a$. Suppose $|b| < a$, then $-a < -|b|$. Therefore, its clear to see that $-a < -|b| \leq b \leq |b| < a$, where $-|b| \leq b \leq |b|$ holds by the definition of absolute values (definition 3.3 from the text). Thus, we have shown that $-a < b < a$. 
+
+Now lets look at the reverse direction. Suppose $-a < b < a$. If $b \geq 0$, then $|b| = b < a$. If $b < 0$, then $|b| = -b < a$, which holds by Theorem 3.2 (i) from the textbook since we know by assumption that $-a < b$. Thus we have shown that $|b| < a$. \\
+}
+
+\item Show that $|a-b|< c$ if and only if $b-c < a < b+c.$
+
+\jg{
+By part (a), we know that $|a-b| < c$ if and only if $-c < a-b < c$. And we know that $-c < a-b < c$ holds if and only if $b - c < a < b+c$ by $\textbf{O4}$ from the textbook. Therefore, we have proven $|a-b|< c$ if and only if $b-c < a < b+c$.  \\
+}
+
+\item Show that $|a-b|\leq c$ if and only if $b-c \leq a \leq b+c.$
+
+\jg{
+By 3.5 part (a), we know that $|a-b| \leq c$ if and only if $-c \leq a-b \leq c$. And we know that $-c \leq a-b \leq c$ holds if and only if $b-c \leq a \leq b+c$ by $\textbf{O4}$ from the textbook. Therefore, we have proven $|a-b| \leq c$ if and only if $b-c \leq a \leq b+c$. \\
+}
+
+\end{enumerate}
+\clearpage
+\item (Ross 3.8) Let $a, b \in \mathbb{R}.$ Show if $a \leq b_1$ for every
+$b_1>b$, then $a\leq b$.
+
+\jg{
+We will prove this by contradiction. 
+
+Suppose $a \nleq b$. By $\textbf{O1}$, if $a \nleq b$ then $b < a$. 
+
+Now choose $b_1 = (a+b)/2$. This is strictly greater than $b$ since $b < a$, so this choice of $b_1$ satisfies $b_1 = (a+b)/2 > b$. Also, $(a+b)/2 < a$ since it is the average (or midpoint) of $a$ and $b$, and since $b < a$. Therefore, $b_1$ must be less than $a$. 
+
+This choice of $b_1$ satisfies $b_1 > b$, but $b_1 < a$, meaning $a \nleq b_1$. This contradicts our hypothesis that $a \leq b_1$ for every $b_1 > b$. Therefore, our assumption that $a \nleq b$ must be false, so $a \leq b$. By contradiction, we have shown that if $a \leq b_1$ for every $b_1 > b$, then $a \leq b$.
+}
+
+\clearpage
+\item Let $a, b>0$. Show that $(ab)^{\frac{1}{2}} \leq \frac{1}{2}(a+b).$
+\end{enumerate}
+
+\jg{
+Let $a, b > 0$. We want to show that $(ab)^{\frac{1}{2}} \leq \frac{1}{2}(a+b)$. Since $a,b > 0$, both sides of the inequality are positive. Then, we can square both sides to get
+\begin{align*}
+    \frac{1}{4}(a+b)^2 = \frac{1}{4}(a^2 + 2ab + b^2) \geq ab.
+\end{align*}
+Subtracting $ab$ from each side gives 
+\begin{align*}
+    \frac{1}{4}(a^2 + 2ab + b^2) - ab \geq 0. 
+\end{align*}
+Distributing $\frac{1}{4}$ gives 
+\begin{align*}
+    \frac{1}{4}a^2 + \frac{1}{2}ab + \frac{1}{4}b^2 - ab \geq 0.
+\end{align*}
+Let's now rearrange terms as follows 
+\begin{align*}
+   &\frac{1}{4}a^2 - \frac{1}{2}ab + \frac{1}{4}b^2 \geq 0\\
+   &\frac{1}{4}(a^2 - 2ab + b^2) \geq 0 \\
+   &\frac{1}{4}(a-b)^2 \geq 0
+\end{align*}
+Let $c = (a-b)$. By Theorem 3.2 (iv) from the textbook, we know that $c^2 = (a-b)^2 \geq 0$ for all $c$ (or all real numbers $a$ and $b$). Therefore $\frac{1}{4}(a-b)^2$ is positive. Thus, we have proved the inequality $(ab)^{\frac{1}{2}} \leq \frac{1}{2}(a+b)$ for all $a, b > 0$. 
+}
+
+\clearpage
+\begin{center}
+\vspace*{\fill}
+{\Large End of Homework}
+\vspace*{\fill}
+\end{center}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

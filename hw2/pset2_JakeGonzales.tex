@@ -1,0 +1,479 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -*- LaTeX -*- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%**start of header
+\documentclass [10pt]{article}
+\usepackage{epsfig}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{esint}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage{xcolor}  
+% In case you need to adjust margins:
+\topmargin=-0.45in %
+\evensidemargin=0in %
+\oddsidemargin=0in %
+\textwidth=6.5in %
+\textheight=9.0in %
+\headsep=0.25in %
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand{\jg}[1]{{\color{blue} #1}}
+
+\begin{document}
+\begin{center}
+{\bf Homework Problems}\\
+Math 327, Winter 2025\\
+Due 11:30 pm, January 22, 2025
+\end{center}
+
+\begin{center}
+\jg{
+    Jake Gonzales}
+\end{center}
+
+{\bf Instructions:} Please include the full problem statement in your submission.
+All solutions must be written in legible handwriting
+or typed (in each case, the text should be of a reasonable size). Your solutions to
+all problems should be written in complete sentences, with proper grammatical
+structure.
+In all cases where external resources are consulted or used, proper citation must
+be given. In addition,
+you must provide information on collaboration with your submission: if you worked with others,
+or consulted anyone aside from the course staff, in preparing the solutions, their
+names should be
+listed; if you didn't work with anyone, please indicate this.
+If your solutions are not typed, you must scan your written solutions and submit
+the digital copy. When submitting problems through LaTex, the LaTex source file
+(.tex) must be included in the submission. \\
+
+\jg{
+\textbf{Collaborators: N/A }
+}
+
+\begin{enumerate}
+
+\item Let $\mathbb{R}[x]$ be the class of single-variable polynomials with real
+coefficients. Specifically,
+\begin{align*}
+\mathbb{R}[x]:= \left\{ a_{m}x^m+ a_{m_1}x^{m-1}+ \cdots +a_1 x + a_0~:~
+a_m, a_{m-1}, \dots, a_1, a_0 \in \mathbb{R} \right\}.
+\end{align*}
+Furthermore, define the class of rational functions, $\mathbb{F}$, by
+\begin{align*}
+\mathbb{F} := \left\{ \frac{P(x)}{Q(x)}~:~ P, Q \in \mathbb{R}[x], \quad \text{and} \quad  Q \not\equiv 0 \right\}.
+\end{align*}
+Also, for two elements $f, g \in \mathbb{F}$ define addition and multiplication by
+\begin{align*}
+(f+g)(x)&:= f(x) +g(x)\\
+(f\cdot g)(x) &:= f(x)\cdot g(x).
+\end{align*}
+We then define the ordering on $\mathbb{F}$ by $f \leq g$ if and only if there
+exists $M>0$ such that for all $x>M$
+\begin{align*}
+f(x) \leq g(x).
+\end{align*}
+\begin{enumerate}
+\item Show that $(\mathbb{F}, +, \cdot, \leq)$ is indeed an ordered field
+by verifying the field axioms and the properties of an ordering.
+
+\jg{
+For the rest of this question: Let $a,b,c \in \mathbb{F}$ be arbitrary rational functions. By the definition in the problem statement, we can write them as 
+\begin{align*}
+    a(x) = \frac{P_1(x)}{Q_1(x)}, \quad b(x) = \frac{P_2(x)}{Q_2(x)}, \quad c(x) = \frac{P_3(x)}{Q_3(x)},
+\end{align*}
+where $P_1, P_2, P_3, Q_1, Q_2, Q_3 \in \mathbb{R}[x]$ and $Q_1, Q_2, Q_3 \neq 0$. \\
+
+\textbf{A1.} $a + (b + c) = (a + b) c$ for all $a,b,c$. 
+
+First, we will compute (b+c) 
+\begin{align*}
+    (b+c)(x) = b(x) + c(x) = \frac{P_2(x)}{Q_2(x)} + \frac{P_3(x)}{Q_3(x)}.
+\end{align*}
+To add these two rational functions we will find a common denominator such as 
+\begin{align*}
+    b(x) + c(x) = \frac{P_2(x) Q_3(x) + P_3(x) Q_2(x)}{Q_2(x) Q_3(x)}.
+\end{align*}
+Now we add $a$ to $(b + c)$, so then
+\begin{align*}
+    a + (b+c) = \frac{P_1(x)}{Q_1(x)} + \frac{P_2(x) Q_3(x) + P_3(x) Q_2(x)}{Q_2(x) Q_3(x)}.
+\end{align*}
+And again we find a common denominator between these 
+\begin{align*}
+    a+(b+c) = \frac{P_1(x) Q_2(x) Q_3(x) + P_2(x) Q_3(x) Q_1(x) + P_3(x) Q_2(x) Q_1(x)}{ Q_1(x) Q_2(x) Q_3(x)}.
+\end{align*}
+Now, we compute $(a+b)$ in a similar fashion 
+\begin{align*}
+    (a+b)(x) = a(x) + b(x) = \frac{P_1(x)}{Q_1(x)} + \frac{P_2(x)}{Q_2(x)} = \frac{P_1(x) Q_2(x) + P_2(x) Q_1(x)}{Q_1(x) Q_2(x)}.
+\end{align*}
+Adding $c$ to $(a+c)$ 
+\begin{align*}
+    (a+b) + c 
+    &= \frac{P_1(x)}{Q_1(x)} + \frac{P_2(x)}{Q_2(x)} \\
+    &= \frac{P_1(x) Q_2(x) + P_2(x) Q_1(x)}{Q_1(x) Q_2(x)} + \frac{P_3(x)}{Q_3(x)} \\
+    &= \frac{P_1(x) Q_2(x) Q_3(x) + P_2(x) Q_1(x) Q_3(x) + P_3(x) Q_1(x) Q_2(x)}{Q_1(x) Q_2(x) Q_3(x)}.
+\end{align*}
+Now by observing both of our answers we see that $a + (b+c) = (a+b) + c$. Thus we have shown $\textbf{A1}$ holds. \\
+
+\textbf{A2.} $a + b = b + a$ for all $a,b$. 
+
+First, we compute $(a+b)$ 
+\begin{align*}
+    a + b = \frac{P_1(x)}{Q_1(x)} + \frac{P_2(x)}{Q_2(x)} = \frac{P_1(x) Q_2(x) + P_2(x) Q_1(x)}{Q_1(x) Q_2(x)}.
+\end{align*}
+Then we compute $b + a$ 
+\begin{align*}
+    b + a = \frac{P_2(x)}{Q_2(x)} + \frac{P_1(x)}{Q_1(x)} = \frac{P_2(x) Q_1(x) + P_1(x) Q_2(x)}{Q_2(x) Q_1(x)}. 
+\end{align*}
+Now we analyze the numerator and denominator for each result. For the numerator, we observe that $P_1(x) Q_2(x) + P_2(x) Q_1(x)$ is in fact identical to $P_2(x) Q_1(x) + P_1(x) Q_2(x)$ because addition of real numbers is commutative. And for the denominators, $Q_1(x) Q_2(x)$ is identical to $Q_2(x) Q_1(x)$ since multiplication of polynomials is commutative. Therefore, we have shown $\textbf{A2}$ holds. \\
+
+\textbf{A3.} $a + 0 = 0$ for all $a$. 
+
+We first need to define the additive identity in $\mathbb{F}$. It can be defined as the rational function $0(x)$ where $P(x) = 0$ is the zero polynomial where all coefficients are equal to zero and $Q(x) = 1$ is a constant polynomial. Therefore we have $0(x) = P(x) / Q(x) = 0/1 = 0$. Having defined this, let us now compute $(a +0)$ as follows 
+\begin{align*}
+    (a+0)(x) = a(x) + 0(x) = \frac{P(x)}{Q(x)} + \frac{0}{1}. 
+\end{align*}
+To add these, we find the common denominator and simplify 
+\begin{align*}
+    a + 0 = \frac{P(x) \cdot 1 + 0 \cdot Q(x)}{Q(x) \cdot 1} = \frac{P(x)}{Q(x)}. 
+\end{align*}
+And clearly, when we compare this result to $a = P(x)/Q(x)$, we see that they are identical. Therefore, we have shown \textbf{A3} holds. \\
+
+\textbf{A4.} For each $a$ there is an element $-a$ such that $a + (-a) = 0$.
+
+We first need to define the additive inverse $-a$ in $\mathbb{F}$. We can define it as follows
+\begin{align*}
+    (-a)(x) = \frac{- P(x)}{Q(x)}
+\end{align*}
+where $-P(x)$ is the polynomial when every coefficient is multiplied by $-1$. Now, we compute $a + (-a)$ 
+\begin{align*}
+    (a+ (-a))(x) = a(x) + (-a)(x) = \frac{P(x)}{Q(x)} + \frac{-P(x)}{Q(x)}.
+\end{align*}
+Adding these together gives
+\begin{align*}
+    a + (-a) = \frac{P(x) + (-P(x)}{Q(x)}.
+\end{align*}
+If we simplify the numerator we recover the zero polynomial such that $a + (-a) = 0/Q(x) = 0(x)$ (as shown in the last part). Therefore, we have shown that  
+\begin{align*}
+    (a+ (-a))(x) = 0(x).
+\end{align*}
+Thus, we have shown \textbf{A4} holds. \\
+
+\textbf{O1.} Given $a$ and $b$, either $a \leq b$ or $b \leq a$. 
+
+Let's consider the difference between $a(x)$ and $b(x)$ denoted as $d(x)$: 
+\begin{align*}
+    d(x) = a(x) - b(x) = \frac{P_1(x)}{Q_1(x)} - \frac{P_2(x)}{Q_2(x)} = \frac{P_1(x) Q_2(x) - P_2(x) Q_1(x)}{Q_1(x) Q_2(x)}.
+\end{align*}
+We know that for large enough $x$, the behavior of the rational function will be determined by the highest degree terms in the numerator and denominator. Therefore, as $x$ grows, the leading coefficient of $d(x)$ will determine whether $d(x)$ is eventually positive or negative. To make this clear, we can write $d(x)$ as 
+\begin{align*}
+    d(x) \approx \frac{c_N x^n}{c_D x^m} = \frac{c_N}{c_D} x^{n-m}
+\end{align*}
+where $c_N$ is the leading coefficient for the numerator of $d(x)$ and $c_D$ is the leading coefficient for the denominator of $d(x)$. Then we can check all of the cases as follows
+\begin{enumerate}
+    \item If $d(x) = a(x) - b(x)$ eventually becomes positive, meaning there exits a point $M$ such that $x>M$ for all $x$, then $a(x) \leq b(x)$. 
+    \item If $d(x) = a(x) - b(x)$ eventually becomes negative, meaning there exists a point $M$ such that $x>M$ for all $x$, then $b(x) \leq a(x)$. 
+    \item If $h(x)=0$ this means that $a(x) = b(x)$ for all $x$, so $a \leq b$ and $b \leq a$. 
+\end{enumerate}
+Therefore, we have shown that in all cases, \textbf{O1} holds. \\
+
+\textbf{O2.} If $a\leq b$ and $b\leq a$ then $a=b$. 
+
+We are given that $a \leq b$ and $b \leq a$. From the problem definition we know that this means the following 
+\begin{itemize}
+    \item $a \leq b$ means there exists $M_1 >0$ such that $a(x) \leq b(x)$ for all $x > M_1$.
+    \item $b \leq a$ means there exists $M_2 > 0$ such that $b(x) \leq a(x)$ for all $x > M_2$
+\end{itemize}
+We are given both are true. Then let $M = \max(M_1, M_2)$. Then we can directly conclude that the above two statements imply $a(x) = b(x)$ for all $x > M$. Thus, we have shown that \textbf{O2} holds. \\
+
+\textbf{O3.} If $a \leq b$ and $b \leq c$, then $a \leq c$. 
+
+We are given that $a \leq b$ and $b \leq c$, and want to show $a \leq c$. From the definition of our problem statement we know that 
+\begin{itemize}
+    \item $a \leq b$ means there exists $M_1 > 0$ such that for all $x > M_1, a(x) \leq b(x)$. 
+    \item $b \leq c$ means there exists $M_2 > 0$ such that for all $x > M_2, b(x) \leq c(x)$.
+\end{itemize}
+Then we can let $M = \max(M_1, M_2)$ which ensures that for all $x > M$, both $x > M_1$ and $x > M_2$ hold. Therefore, we can conclude that we can combine the results and say there exists an $M$ defined as $M = \max(M_1, M_2)$ such that for all $x > M, a(x) \leq b(x) \leq c(x)$. Therefore, we can conclude that $a(x) \leq c(x)$. Thus, we have shown that \textbf{O3} holds. \\
+
+\textbf{O4.} If $a \leq b$ then $a + c \leq b + c$. 
+
+We are given $a \leq b$ which means there exists $M_1 > 0$ such that for all $x > M$, $a(x) \leq b(x)$. We need to show that $a + c \leq b + c$, which means that we need to find an $M > 0$ such that for all $x > M, (a + c)(x) \leq (b + c)(x)$. 
+
+First we can write out the given inequality that $a \leq b$. Since $a \leq b$, there exits $M_1 > 0$ such that for all $x > M_1$: 
+\begin{align*}
+    \frac{P_1(x)}{Q_1(x)} \leq \frac{P_2(x)}{Q_2(x)}
+\end{align*}
+which can be written as $P_1(x) Q_2(x) \leq P_2(x) Q_1(x)$ for all $x > M_1$.
+
+Let's add $c$ to both sides and write out $(a+c)$ and $(b+c)$ as follows 
+
+\begin{align*}
+    (a+c)(x) = a(x) + c(x) = \frac{P_1(x)}{Q_1(x)} + \frac{P_3(x)}{Q_3(x)}
+\end{align*}
+and 
+\begin{align*}
+    (b+c) = b(x) + c(x) = \frac{P_2(x)}{Q_2(x)} + \frac{P_3(x)}{Q_3(x)}
+\end{align*}
+Adding these rational functions gives us 
+\begin{align*}
+    (a+c)(x) = \frac{P_1(x) Q_3(x) + P_3(x) Q_1(x)}{Q_1(x) Q_3(x)}
+\end{align*}
+and 
+\begin{align*}
+    (b+c)(x) =  \frac{P_2(x) Q_3(x) + P_3(x) Q_2(x)}{Q_2(x) Q_3(x)}
+\end{align*}
+If we cross multiply and simplify then this comes down to comparing $P_1(x) Q_2(x)$ vs. $P_2(x) Q_1(x)$, which is expected and by our given inequality we know that for all $x > M_1$, $P_1(x) Q_2(x) \leq P_2(x) Q_1(x)$. Then we can conclude that if $a \leq b$, then for all $x > M$ we have that $(a + c)(x) \leq (b+c)(x)$. Thus, we have shown that \textbf{O4} holds. \\
+
+\textbf{O5.} If $a \leq b$ and $0 \leq c$, then $ac \leq bc$. 
+
+We are given $a\leq b$ which means there exists $M_1 > 0$ such that for all $x > M_1$, $a(x) \leq b(x)$. And that $0 \leq c$ which means there exists $M_2 > 0$ such that for all $x > M_2, 0 \leq c$. 
+
+First, we can write out the inequalities. Since $a \leq b$, there exists $M_1 > 0$ such that for all $x > M_1$ 
+\begin{align*}
+    \frac{P_1(x)}{Q_1(x)} \leq \frac{P_2(x)}{Q_2(x)}
+\end{align*}
+which can be written as $P_1(x) Q_2(x) \leq P_2(x) Q_1(x)$ for all $x > M_1$.
+
+Similarly, since $0 \leq c$, there exists $M_2 > 0$ such that for all $x > M_2$ 
+\begin{align*}
+    0 \leq \frac{P_3(x)}{Q_3(x)}
+\end{align*}
+which means $0 \leq P_3(x)$ for all $x > M_2$ (since $Q_3(x)$ is always positive by definition). Then if we multiply the inequalities by $c$ we can write out $(ac)$ and $(bc)$ as follows
+\begin{align*}
+    (ac)(x) = a(x) \cdot c(x) = \frac{P_1(x)}{Q_1(x)} \cdot \frac{P_3(x)}{Q_3(x)}
+\end{align*}
+and
+\begin{align*}
+    (bc)(x) = b(x) \cdot c(x) = \frac{P_2(x)}{Q_2(x)} \cdot \frac{P_3(x)}{Q_3(x)}
+\end{align*}
+Let $M = max(M_1, M_2)$. Then for all $x > M$, we know that both inequalities hold. Since $P_3(x) \geq 0$ for all $x > M$, when we multiply the original inequality $P_1(x) Q_2(x) \leq P_2(x) Q_1(x)$ by $P_3(x)$, the inequality is preserved. Therefore, for all $x > M$ we have that 
+\begin{align*}
+    P_1(x) Q_2(x) P_3(x) \leq P_2(x) Q_1(x) P_3(x)
+\end{align*}
+Therefore, we have shown that $(ac)(x) \leq (bc)(x)$ for all $x > M$. Thus, we have shown that \textbf{O5} holds.
+}
+
+\item Show that there exists $f$ and $g$ such that for any natural number
+$n$ such that $nf \leq g$. Therefore, $(\mathbb{F}, +, \cdot, \leq)$ does not
+satisfy the Archimedean Property.
+
+\jg{
+From definition 4.6 from the textbook the Archimedean property states that if $a > 0$ and $b > 0$, then for some positive integer $n$, we have $n a > b$. We want to show this does not hold for the above problem statement. 
+
+We can do this by picking arbitrary rational functions for $f$ and $g$ to demonstrate they do not satisfy the Archimedean property. The general idea here is that we can construct a rational function that "grows faster" than the other even if we multiply it by some positive integer $n$. 
+
+Let $f(x) = x$ and $g(x) = x^2$. For any positive integer $n$ we need to show that $n f \leq g$. This means that $n f(x) = nx \leq x^2 = g(x)$ for all $x > M$ for some $M$. For any $n$ we can simply choose $M = n$. Then for all $x > n$ we have $n x < x^2$, since for $x > n, x^2$ grows faster than $nx$. Therefore, we have shown there exists two rational functions $f$ and $g$ that shows $(\mathbb{F}, +, \cdot, \leq)$ does not satisfy the Archimedean property. 
+}
+
+\end{enumerate}
+\clearpage
+%%% Problem 2
+\item (Ross 4.7) Let $S$ and $T$ be nonempty bounded subsets of $\mathbb{R}$.
+
+\jg{
+First of all, for this problem we know that $\inf S, \inf T, \sup S, \sup T$ exist and are real numbers by the completeness axiom since $S$ and $T$ are nonempty bounded subsets of $\mathbb{R}$. 
+}
+\begin{enumerate}
+\item Prove that if $S \subset T$, then $\inf T \leq \inf S \leq \sup S \leq \sup T$.
+
+\jg{
+Suppose $S \subseteq T$. By definition 4.2 and 4.3 from the textbook, we have that $\sup T \geq t$ for all $t \in T$. Since $S \subseteq T$, then clearly $\sup T \geq s$ for all $s \in S$. So, $\sup T$ is greater than (or equal to) the least upper bound for $S$. Which means that $\sup T \geq \sup S$. 
+
+Similarly, $\inf T \leq t$ for all $t \in T$. Since $S \subseteq T$, then clearly $\inf T \leq s$ for all $s \in S$. So $\inf T$ is less than (or equal to) the greatest lower bound for $S$. Which means $\inf T \leq \inf S$. 
+
+Thus, we have proven that if $S \subset T$ then $\inf T \leq \inf S \leq \sup S \leq \sup T$. 
+}
+\item Prove that $\sup (S \cup T) = \max \{ \sup S, \sup T\}$.
+
+\jg{
+We want to show that the supremum of the union of $S$ and $T$ is equal to the $\max$ of $\sup S$ and $\sup T$. 
+
+First, we know that $S$ and $T$ are subsets of the union, so, $S \subseteq S \cup T$ and $T \subseteq S \cup T$. Therefore, by part (a), we know that $\sup S \leq \sup(S \cup T)$ and $\sup T \leq \sup(S \cup T)$. So then, $\max \{ \sup S, \sup T \} \leq \sup(S \cup T)$. 
+
+By definition, $\sup (S\cup T)$ is the least upper bound of $S \cup T$. Therefore, to prove equality, we want to show that $\max \{ \sup S, \sup T\}$ is an upper bound of $S \cup T$. 
+
+We can do this by looking at the elements of $S$ and $T$. Denote $m$ as the elements that are in $S \cup T$. If $m \in S$, then $m \leq \sup S \leq \max \{ \sup S, \sup T\}$. If $m \in T$, then $m \leq \sup T \leq \max \{ \sup S, \sup T\}$. Therefore, $m \leq \max \{ \sup S, \sup T\}$. 
+
+Thus, we have shown that $\sup (S \cup T) = \max \{ \sup S, \sup T\}$.
+}
+\end{enumerate}
+\clearpage
+\item (Ross 4.8) Let $S$ and $T$ be nonempty subsets of $\mathbb{R}$ with the
+following property: $s \leq t$ for all $s \in S$ and $t \in T$.
+\begin{enumerate}
+\item Prove that $S$ is bounded above and $T$ is bounded below.
+
+\jg{
+We know that $S$ is a nonempty subset of $\mathbb{R}$ and some real number $t$ satisfies $s \leq t$ for all $s \in S$. By definition 4.2 part (a), $t$ is an upper bound of $S$ and the set $S$ is bounded above. 
+
+Similarly, we have that $T$ is a nonempty subset of $\mathbb{R}$ and for some real number $s$ satisfies $s \leq t$ for all $t \in T$, so by definition 4.2 part (b), $s$ is a lower bound of $T$ and the set $T$ is bounded below. 
+}
+
+\item Prove that $\sup S \leq \inf T$.
+
+\jg{
+We are given $S$ and $T$ as nonempty subsets of $\mathbb{R}$ with the following property: $s \leq t$ for all $s \in S$ and $t \in T$. 
+
+Firstly, by definition 4.3 from the textbook and part (a) of this problem, $S$ is bounded above, so $\sup S$ exists. Similarly, $T$ is bounded below, so $\inf T$ exists. 
+
+We want to show that $\sup S \leq \inf T$. Let us first show that $\sup S$ is a lower bound for $T$. By the given property, for every $s \in S$, we have $s \leq t$, which means that $t$ is an upper bound for $S$. Since $\sup S$ is the least upper bound for $S$, it follows that $\sup S \leq t$. This holds for all $t \in T$, so $\sup S$ is a lower bound for $T$. 
+
+By definition, $\inf T$ is the greatest lower bound of $T$. Therefore, since $\sup S$ is a lower bound of for $T$, and $\inf T$ is the greatest lower bound, we have $\sup S \leq \inf T$. 
+}
+\item Give an example of such sets $S$ and $T$ where $S \cap T$ is
+nonempty.
+
+\jg{
+We want to give an example of such sets $S$ and $T$, that presumably satisfy the property $s\leq t$ for all $s \in S$ and $t \in T$, where the intersection of $S$ and $T$ is nonempty. So we just need to find the sets where one element say $m$ is such that $m \in S$ and $m \in T$ and satisfies our properties.  
+
+We can define $S = [0,1]$ and $T = [1,2]$. Clearly, the sets are nonempty. Also, by observation, for all $s \in S$ and $t \in T$ we have that $s \leq t$. And we have a nonempty intersection of $S$ and $T$ (i.e., $S \cap T \neq \emptyset$), since the element $m=1$ is in both $S$ and $T$. 
+}
+\item Give an example of sets $S$ and $T$ where $\sup S = \inf T$ and $S\cap T= \emptyset.$
+
+\jg{
+We want to give an example of sets $S$ and $T$ where the least upper bound of $S$ is equivalent to the greatest lower bound of $T$, and where $S$ and $T$ do not share any elements. 
+
+Let's define the sets as $S = (-\infty, 1)$ and $T = [1, \infty)$. Clearly, both sets are nonempty. Also, by observation, for all $s \in S$ and $t \in T$, we have that $s \leq t$ since $S$ are the set of real numbers less than 1 and $T$ is the set of numbers greater than or equal to 1. 
+
+We also have that $\sup S = 1$ since $1$ is an upper bound for $S$ since all elements in $S$ are strictly less than $1$. Furthermore, $1$ is the least upper bound because any number less than $1$ is in the set $S$. We also have $\inf T = 1$ since $1$ is the smallest element in $T$ and is the greatest lower bound of $T$. Lastly, $S \cap T = \emptyset$ since any number in $S$ is strictly less than $1$ and any number in $T$ is greater or equal to 1, therefore, the sets $S$ and $T$ do not share any elements. 
+}
+\end{enumerate}
+\clearpage
+\item (Ross 4.10) Prove that if $a>0$, then there exists $n \in \mathbb{N}$ such
+that $\frac{1}{n} < a < n$.
+
+\jg{
+
+Let us first look at the second inequality $a < n$. The Archimedean property in definition 4.6 from the textbook states that if $a > 0$ and $b > 0$ then for some positive integer $n$, we have $na > b$. We will apply to this to our proof where we let $b = a$ and $a=1$. So we have that $1 > 0$ and $a > 0$ then there exists $n_1 \in \mathbb{N}$ such that $n_1 \cdot 1 > a$. Therefore, $n_1 > a$. 
+
+Now, considering the left inequality $1/n > a$. Since $a>0$, we can write the inequality as $1/a > n$. Then, we can directly apply the Archimedean property again. We have $1/a > 0$ and $1 >0$, then there exists $n_2 \in \mathbb{N}$ such that $n_2 \cdot 1 > 1/a$, therefore, $1/n_2 < a$. 
+
+Now let $n = \max (n_1, n_2)$, since $n \geq n_1$, we have $a < n$ and since $n \geq n_2$ we have $1/n > a$. Thus, we have shown that if $a>0$ then there exists $n \in \mathbb{N}$ such that $1/n < a < n$. 
+}
+\clearpage
+\item (Ross 4.14)
+Let $A$ and $B$ be nonempty bounded subsets of $\mathbb{R}$, and let $A+B$ be
+the set of all sums $a+b$ where $a \in A$ and $b \in B$
+
+\jg{
+Since $A$ and $B$ are nonempty bounded subsets of $\mathbb{R}$, then we know that the supremum and infimum exist and are real numbers. 
+}
+\begin{enumerate}
+\item Prove that $\sup (A+B)= \sup A +\sup B.$
+
+\jg{
+Let $a \in A$ and $b \in B$. By definition of supremum 
+\begin{align*}
+    a \leq \sup A \quad \text{and} \quad b \leq \sup B. 
+\end{align*}
+Adding the inequalities together gives 
+\begin{align*}
+    a + b \leq \sup A + \sup B.
+\end{align*}
+This holds for all $a \in A$ and $b \in B$, so $\sup A + \sup B$ is an upper bound for $A + B$. We now want to show that $\sup A + \sup B$ is the least upper bound for $A + B$. 
+
+Let $M$ be any upper bound for $A + B$. We want to show that $\sup A + \sup B \leq M$. For any $a \in A$ lets fix $b \in B$ such that $a + b \leq M$ which is equivalent to $a \leq M - b$. Since this holds for all $a \in A$, $M - b$ is an upper bound for $A$. By the definition of supremum, 
+\begin{align*}
+    \sup A \leq M - b.
+\end{align*}
+Now we can rearrange this inequality to give $b \leq M - \sup A$. This holds for all $b \in B$. Therefore $M - \sup A$ is an upper bound on $B$. By definition of supremum, we have
+\begin{align*}
+    \sup B \leq M - \sup A.
+\end{align*}
+Rearranging the inequality gives 
+\begin{align*}
+    \sup A + \sup B \leq M.
+\end{align*}
+Therefore, we have shown that $\sup A + \sup B$ is an upper bound for $A + B$ and that $\sup A + \sup B$ is the least upper bound for $A + B$. Thus, we have proven that $\sup (A+B) = \sup A + \sup B$. 
+}
+\item Prove that $\inf(A+B) = \inf A + \inf B.$
+
+\jg{
+We will follow a similar proof structure as part (a). Let $a \in A$ and $b \in B$. By definition of infimum 
+\begin{align*}
+    a \geq \inf A \quad \text{and} \quad b \geq \inf B. 
+\end{align*}
+Adding the inequalities together gives 
+\begin{align*}
+    a + b \geq \inf A + \inf B.
+\end{align*}
+This holds for all $a \in A$ and $b \in B$, so $\inf A + \inf B$ is a lower bound for $A + B$. We now want to show that $\inf A + \inf B$ is the greatest lower bound for $A + B$. 
+
+Let $m$ be any lower bound for $A + B$. We want to show that $\inf A + \inf B \geq m$. For any $a \in A$ lets fix $b \in B$ such that $a + b \geq m$, which is equivalent to $a \geq m - b$. Since this holds for all $a \in A$, $m - b$ is a lower bound for $A$. By definition of infimum, 
+\begin{align*}
+    \inf A \geq m - b.
+\end{align*}
+Now we can rearrange this inequality to give $b \geq m - \inf A$. This holds for all $b \in B$. Therefore $m - \inf A$ is a lower bound on $B$. By definition of infimum, we have 
+\begin{align*}
+    \inf B \geq m - \sup A.
+\end{align*}
+Rearranging the inequality gives 
+\begin{align*}
+    \inf A + \inf B \geq m. 
+\end{align*}
+Therefore, we have shown that $\inf A + \inf B$ is a lower bound for $A + B$ and that $\inf A + \inf B$ is the greatest lower bound for $A + B$. Thus, we have proven that $\inf(A+B) = \inf A + \inf B.$
+}
+\end{enumerate}
+\clearpage
+\item (Ross 4.15)
+Let $ a, b \in \mathbb{R}.$ Show that if $a \leq b+\frac{1}{n}$ for all $n \in \mathbb{N}$, then $a \leq b.$
+
+\jg{
+We are given $a, b \in \mathbb{R}$ such that $a \leq b + 1/n$ for all $n \in \mathbb{N}$. We want to show that $a \leq b$. Suppose, for the sake of contradiction, that $a > b$. Then, $a-b > 0$. By the Archimedean property, there exists some $n \in \mathbb{N}$ such that
+\begin{align*}
+    n (a-b) > 1.
+\end{align*}
+Rearranging gives 
+\begin{align*}
+    (a-b) > \frac{1}{n}.
+\end{align*}
+Adding $b$ to both sides gives 
+\begin{align*}
+    a > b + \frac{1}{n}.
+\end{align*}
+This contradicts our assumption that $a \leq b + 1/n$ for all $n \in \mathbb{N}$. 
+
+Therefore, by contradiction, we have shown that if $a \leq b+\frac{1}{n}$ for all $n \in \mathbb{N}$, then $a \leq b$. 
+}
+\clearpage
+\item (Ross 4.16)
+Show that $\sup \{ r \in \mathbb{Q}~:~ r < a\}= a$ for each $a \in \mathbb{R}.$
+
+\jg{
+The set $S = \{r \in \mathbb{Q} : r < a\}$ is the set of rational numbers that are less than some real number $a$. The supremum of that set, written $\sup S = \sup \{r \in \mathbb{Q} : r < a\} $, is the least upperbound for that set, so $\sup S \geq r$ for all $r \in S$. To prove that $\sup \{r \in \mathbb{Q} : r < a\} = a$ for each $a \in \mathbb{R}$, by definition 4.2 and 4.3, we need to show that $a$ is an upper bound for the set and that $a$ is the least upper bound of $S$, meaning that no real number smaller than $a$ is an upper bound for $S$. Let's show these two things: 
+
+\textbf{\underline{proof:}} 
+
+By definition $S = \{r \in \mathbb{Q} : r < a\}$, so for every $r \in S$, we have $r < a$. Therefore, $a$ is an upper bound for $S$. 
+
+We now want to show that $a$ is a least upper bound of $S$. To do this, we need to show that for any other real number $b$ such that $b < a$, $b$ is not an upper bound for the set $S$. Meaning, there exists some $r \in S$ such that $r > b$. Suppose $b < a$. Then by Denseness of $\mathbb{Q}$ in definition 4.7 from the textbook, we know that since $a, b \in \mathbb{R}$ and $b < a$ there exists some rational number $r \in \mathbb{Q}$ such that $b < r < a$. This $r$ from the definition satisfies $r \in S$ since $r > a$ and $r < b$. Thus, $b$ cannot be an upper bound for $S$ and therefore $a$ is the least upper bound of $S$. 
+
+Therefore, combining these two steps, we can conclude that $S = \{r \in \mathbb{Q} : r < a\} =a$ for each $a \in \mathbb{R}$. 
+}
+\end{enumerate}
+\clearpage
+\begin{center}
+\vspace*{\fill}
+{\Large End of Homework}
+\vspace*{\fill}
+\end{center}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
