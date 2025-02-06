@@ -1,0 +1,305 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -*- LaTeX -*- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%**start of header
+\documentclass [10pt]{article}
+\usepackage{epsfig}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{esint}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage{xcolor}  
+\newcommand{\hum}{\mathrm{H}}
+\newcommand{\rob}{\mathrm{R}}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mb}{\mathbb}
+% In case you need to adjust margins:
+\topmargin=-0.45in %
+\evensidemargin=0in %
+\oddsidemargin=0in %
+\textwidth=6.5in %
+\textheight=9.0in %
+\headsep=0.25in %
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand{\jg}[1]{{\color{blue} #1}}
+
+\begin{document}
+\begin{center}
+{\bf Homework Problems}\\
+Math 327, Winter 2025\\
+Due 11:30 pm, February 5, 2025
+\end{center}
+
+\begin{center}
+\jg{
+    Jake Gonzales}
+\end{center}
+
+{\bf Instructions:} Please include the full problem statement in your submission.
+All solutions must be written in legible handwriting
+or typed (in each case, the text should be of a reasonable size). Your solutions to
+all problems should be written in complete sentences, with proper grammatical
+structure.
+In all cases where external resources are consulted or used, proper citation must
+be given. In addition,
+you must provide information on collaboration with your submission: if you worked with others,
+or consulted anyone aside from the course staff, in preparing the solutions, their
+names should be
+listed; if you didn't work with anyone, please indicate this.
+If your solutions are not typed, you must scan your written solutions and submit
+the digital copy. When submitting problems through LaTex, the LaTex source file
+(.tex) must be included in the submission. \\
+
+\jg{
+\textbf{Collaborators: N/A }
+}
+
+\begin{enumerate}
+\item (Ross 9.3) Suppose $\lim a_n = a$, $\lim b_n = b$, and \begin{align*}
+s_n = \frac{a_n^3+4a_n}{b_n^2+1}.
+\end{align*}
+Prove $\lim s_n = \frac{a^3+4a}{b^2+1}$ carefully, using the limit theorems.
+
+\jg{
+We are given that $\lim a_n = a$. By Theorem 9.4 from the textbook, we know that
+\begin{align*}
+    \lim a_n = (\lim a_n) (\lim a_n) = (a)(a) = a \cdot a = a^2.
+\end{align*}
+And applying Theorem 9.4 again gives
+\begin{align*}
+    \lim a_n^3 = (\lim a_n^2) (\lim a_n) = (a^2) (a) = a^2 \cdot a = a^3.
+\end{align*}
+Therefore, $\lim a_n^3 = a^3$. 
+
+Now, by Theorem 9.2, we know that if $\lim a_n = a$, and $k = 4 \in \mathbb{R}$, $(4a_n)$ converges to $4a$. That is, $\lim (4a_n) = 4 \cdot a_n$. Furthermore, by Theorem 9.3, we know that if $(a_n^3)$ converges to $a^3$ and $(4a_n)$ converges to $4a$, then $\lim (a^3_n + 4a_n) = \lim a_n^3 + \lim 4a_n = a^3_n + 4a_n$.  
+
+Similarly, we are given $\lim b_n = b$. Therefore, by Theorem 9.4 we know 
+\begin{align*}
+    \lim b_n = (\lim b_n) (\lim b_n) = (b) (b) = b \cdot b = b^2. 
+\end{align*}
+And clearly, $\lim (b_n^2 + 1) = b^2 + 1$. Since, $b_n^2 + 1 \neq 0$ and $b^2 + 1 \neq 0$ for all $n$, then by Theorem 9.6,
+\begin{align*}
+    \lim s_n = \lim \frac{a_n^3+4a_n}{b_n^2+1} = \frac{a^3+4a}{b^2+1}.
+\end{align*}
+Hence, we finished the proof. 
+}
+\clearpage
+\item (Ross 9.6) Let $x_1 = 1$ and $x_{n+1} = 3x^2_n
+$ for $n \geq 1$.
+\begin{enumerate}
+\item Show if $a = \lim x_n$, then $a = 1/3$ or $a = 0$.
+
+\jg{
+We can write $\lim x_{n+1} = \lim 3 x_n^2$.
+
+Since $\lim x_n = a$, and by Theorem 9.2 and 9.4, we can write 
+\begin{align*}
+    \lim x_{n+1} = \lim 3 x_n^2 = 3 (\lim x_n)^2 = 3a^2.
+\end{align*}
+And since $x_{n+1}$ is just the next term in the sequence, then the limit is the same as $x_{n+1}$, so we have $\lim x_{n+1} = a$ and $\lim 3x_n^2 = 3a^2$, therefore, $3a^2 = a$. So now, solving for $a$, we can write $3a^2 - a = 0$, factoring $a(3a - 1) = 0$, then we see $a = 0$ or $3a - 1 = 0 \implies a = 1/3$.
+
+Thus, if the limit of $x_n$ exists and is equal to $a$, then $a$ must be equal to $1/3$ or $0$. 
+}
+\item Does $\lim x_n$ exist? Explain.
+
+\jg{
+The sequence is defined as $x_1 = 1$ and $x_{n+1} = 3x_n^2$. We can compute a few instances of the sequence: 
+\begin{align*}
+    x_1 = 1, \\
+    x_2 =3x_1^2 = 3(1)^2 = 3, \\
+    x_3 = 3x_2^2 = 3(3)^2 = 27, \\
+    x_4 = 3x_3^2 = 3(27)^2 = 2187, \\
+\end{align*}
+and so on. The sequence is growing to large values as $n$ grows since the sequence is defined as the square or the previous sequence value times three. For all $n \geq 1$, this will lead to increasingly large numbers. Therefore, we can conclude that the sequence is not bounded and therefore does not converge. So, $\lim x_n$ diverges to $+ \infty$.  Thus $\lim x_n$ does not exist. 
+}
+\item Discuss the apparent contradiction between parts (a) and (b).
+
+\jg{
+Well the apparent contradiction is that in part (a) we find a limit for the sequence $x_n$, but in part (b) we conclude that $\lim x_n$ does not exist since it diverges to $+ \infty$. This is a clear contradiction. But to be clear, the reason we arrived at this contradiction was because of the conditional statement provided in the question. We made assumption that IF $a = \lim x_n$, then $a$ must equal $1/3$ or $0$. We made no such assumption in part (b). 
+}
+\end{enumerate}
+\clearpage
+
+\item (Ross 9.9) Suppose there exists $N_0$ such that $s_n \leq t_n$ for all
+$n>N_0$.
+\begin{enumerate}
+\item Prove that if $\lim s_n = +\infty$, then $\lim t_n = +\infty$.
+
+\jg{
+We are given $\lim s_n = +\infty$ meaning, by definition 9.8 from the textbook, for each $M>0$ there exists $N\geq N_0$ such that $s_n > M$ for all $n > N$. Then, clearly $t_n > M$ for all $n>N$, since $s_n \leq t_n$ for all $n$. 
+
+Hence, this shows $\lim t_n = + \infty$.
+}
+\item Prove that if $\lim t_n = -\infty$, then $\lim s_n = -\infty$.
+
+\jg{
+We are given $\lim t_n = -\infty$ meaning, by definition 9.8, for each $M < 0$ there exists $N \geq N_0$ such that $t_n < M$ for all $n > N$. Then, clearly $s_n < M$ for all $n > N$, since $s_n \leq t_n$ for all $n$. 
+
+Hence, this shows $\lim s_n = - \infty$.
+}
+\item Prove that if $\lim s_n$ and $\lim t_n$ exist, then $\lim s_n \leq \lim t_n$.
+
+\jg{
+First, in the previous two parts (a) and (b), we have shown the behavior of $(s_n)$ and $(t_n)$ for infinite limits. Lets then assume $(s_n)$ and $(t_n)$ converge.
+
+Second, we showed in a previous homework (pset 3, problem 7.a or Ross 8.9.a) that assuming $(s_n)_{n=1}^{\infty}$ converges, then if $s_n \geq a$ for all but finitely many $n$, then $\lim s_n \geq a$. Using this, we are given $s_n \leq t_n$, so $(s_n - t_n) \leq 0$, therefore $\lim (s_n - t_n) \leq 0$. And, by theorems 9.2 and 9.3 from the textbook, we have $\lim s_n - \lim t_n \leq 0$. 
+
+Hence, we've shown $\lim s_n \leq \lim t_n$. 
+}
+\end{enumerate}
+\clearpage
+
+\item (Ross 9.11)
+\begin{enumerate}
+\item Show that if $\lim s_n = +\infty$ and $\inf\{t_n : n \in \mathbb{N}\} > -\infty$, then $\lim (s_n + t_n)=+\infty$.
+
+\jg{
+We are given $\lim s_n = + \infty$, which means that for any $M_1 > 0$ there exists $N_1$ such that for all $n \geq N_1$, we have $s_n \geq M_1$. 
+
+We want to show that $\lim (s_n + t_n) = + \infty$. This means that for any $M > 0$, there exits $N$ such that for all $n \geq N$, we have $s_n + t_n > M$. 
+
+Let $M > 0$. Let $m = \inf \{t_n : n \in \mathbb{N} \}$, so we know that $t_n \geq m$ for all $n$. We want to show $s_n + t_n > M$, which can be rewritten as 
+\begin{align*}
+    s_n > M - t_n. 
+\end{align*}
+Since $t_n \geq m$, we have $M - t_n \geq M - m$. Thus, it suffices to show that 
+\begin{align*}
+    s_n > M - m.
+\end{align*}
+Therefore, for all $n > N_1$, we have 
+\begin{align*}
+    s_n + t_n > (M-m) + t_n \geq (M-m) + m = M.
+\end{align*}
+Let $N = N_1$, then for all $n > N$, we have $s_n + t_n > M$, and thus $\lim (s_n + t_n) = + \infty$. 
+}
+\item Show that if $\lim s_n = +\infty$ and $\lim t_n > -\infty$, then $\lim (s_n + t_n) =+\infty$.
+
+\jg{
+If $\lim t_n > - \infty$, then the sequence $(t_n)$ does not diverge to $- \infty$, so it must be bounded below by some finite number. Thus, if $\lim t_n > - \infty$, then $\inf\{t_n : n \in \mathbb{N}\} > -\infty$. 
+
+Then, we can directly apply part (a). 
+
+Hence, we've shown if $\lim s_n = +\infty$ and $\lim t_n > -\infty$, then $\lim (s_n + t_n) =+\infty$.
+}
+\item Show that if $\lim s_n = +\infty$ and if $(t_n)$ is a bounded sequence, then $\lim (s_n + t_n)=+\infty$.
+
+\jg{
+From the beginning of section 9 in the textbook, a sequence $(t_n)$ is a bounded sequence if the set $\{t_n : n \in \mathbb{N} \}$ is a bounded set, i.e., if there exits a constant $M$ such that $|t_n| \leq M$ for all $n$. 
+
+This implies that $t_n \geq -M$ for all $n$, so by definition, $\inf \{t_n : n \in \mathbb{N} \} \geq -M > - \infty$. 
+
+Then we can directly apply part (a). 
+
+Hence, we've shown if $\lim s_n = +\infty$ and if $(t_n)$ is a bounded sequence, then $\lim (s_n + t_n)=+\infty$.
+}
+\end{enumerate}
+\clearpage
+
+\item (Ross 9.17)
+Give a formal proof that $\lim n^2 = +\infty$ using only Definition 9.8.
+
+\jg{
+\textbf{\underline{Discussion:}}
+
+From definition 9.8 from the textbook, for a sequence $(s_n)$, we write $\lim s_n = + \infty$ provided for each $M>0$ there is a number $N$ such that $n > N$ implies $s_n > M$. 
+
+Therefore, to prove $\lim n^2 = + \infty$, we want to find an arbitrary $M > 0$ such that $n^2 > M$ or $n > \sqrt{M}$. So let's choose $N = \sqrt{M}$. \\
+
+\textbf{\underline{Formal Proof:}}
+
+Let $M > 0$ and let $N = \sqrt{M}$. Then $n > N$ implies $n > \sqrt{M}$, hence $n^2 > M$. This shows $\lim n^2 = + \infty$. 
+}
+\clearpage
+\item (Ross 9.18)
+\begin{enumerate}
+\item Verify $1 + a + a^2 + \cdots + a^n = \frac{1-a^{n+1}}{1-a}$ for $a \neq 1$.
+
+\jg{
+Denote the sum above as $S_n = 1 + a + a^2 + \cdots + a^n$. We want to show $S_n = \frac{1-a^{n+1}}{1-a}$ for $a \neq 1$. 
+
+Consider the sum below
+\begin{align*}
+    S_n = 1 + a + a^2 + \cdots + a^n.
+\end{align*}
+Now, subtract $(1-a)$ from both sides
+\begin{align*}
+    (1-a) S_n &= (1-a)(1 + a + a^2 + \cdots + a^n) \\
+    &= (1 + a + a^2 + \cdots + a^n) - (a + a^2 + a^3 + \cdots + a^{n+1}) \\
+    &= 1 + (a-a) + (a^2 - a^2) + \cdots + (a^n - a^n) - a^{n+1} \\
+    &= 1 - a^{n+1}. 
+\end{align*}
+Therefore, by dividing $(1-a)$ from each side,
+\begin{align*}
+    S_n = \frac{1-a^{n+1}}{1-a}. 
+\end{align*}
+Hence, we've shown $1 + a + a^2 + \cdots + a^n = \frac{1-a^{n+1}}{1-a}$ for $a \neq 1$. 
+}
+
+\item Find $\lim_{n \to \infty} (1 + a + a^2 + \cdots + a^n)$ for $|a| < 1$.
+
+\jg{
+We want to find the the limit $\lim_{n \to \infty} (1 + a + a^2 + \cdots + a^n)$ for $|a| < 1$, lets write out what we proved in the previous part (a)
+\begin{align*}
+    1 + a + a^2 + \cdots + a^n = \frac{1-a^{n+1}}{1-a} \quad \text{for} \quad a \neq 1. 
+\end{align*}
+Then lets consider the limit of both sides as $n \rightarrow \infty$
+\begin{align*}
+    \lim (1 + a + a^2 + \cdots + a^n)= \lim \frac{1-a^{n+1}}{1-a}
+\end{align*}
+Since $|a| < 1$, we know that $a^{n+1} \rightarrow 0$ as $n$ grows large (this is also shown in theorem 9.7 part (b)). Therefore, the limit can be simplified to
+\begin{align*}
+    \lim \frac{1-a^{n+1}}{1-a} = \frac{1-0}{1-a} = \frac{1}{1-a}. 
+\end{align*}
+Thus, the limit is $1/(1-a)$. 
+}
+\item Calculate $\lim_{n\to \infty}(1 + \frac{1}{3} + \frac{1}{9} + \frac{1}{27} + \cdots + \frac{1}{3^n})$.
+
+\jg{
+Let's take two approaches to calculate this limit. First, let's write out the first few values, so we know that we start the sequence with 1, then every following element is $1/3^n$ for $n \geq 1$. Let $L$ be the limit and sum of the sequence so, 
+\begin{align*}
+    L = 1 + \frac{1}{3^1} + \frac{1}{3^2} + \frac{1}{3^3} + \frac{1}{3^4} = \frac{1}{3} + \frac{1}{9} + \frac{1}{27} + \frac{1}{81} = 1.4938.
+\end{align*}
+So we can see for larger $n$, we approach $1.5$. That would be the approximation I'd arrive at.
+
+For a more formal approach, we can look at section 10.3 of the textbook on page 59 where they show the following fact for a geometric sequence 
+\begin{align*}
+    \lim a(1 + r + r^2 + \cdots + r^n) = \frac{a}{r - 1} \quad \text{for} \quad |r| < 1. 
+\end{align*}
+Thus, we can compute the limit by substituting $a = 1$ and $r=\frac{1}{3}$, giving $\frac{1}{1 - (1/3)}$. Hence, the limit is $3/2$ as we approximated. 
+}
+
+\item What is $\lim_{n\to \infty}(1 + a + a^2 + \cdots + a^n)$ for $a\geq 1$?
+
+\jg{
+The sequence clearly grows exponentially for $a > 1$ and linearly for $a = 1$ as $n$ grows large. For both cases, by definition 9.8 from the textbook, $\lim_{n\to \infty}(1 + a + a^2 + \cdots + a^n) = + \infty$ for $a \geq 1$. 
+}
+\end{enumerate}
+\end{enumerate}
+
+\clearpage
+\begin{center}
+\vspace*{\fill}
+{\Large End of Homework}
+\vspace*{\fill}
+\end{center}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
