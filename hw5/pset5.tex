@@ -1,0 +1,383 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -*- LaTeX -*- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%**start of header
+\documentclass [10pt]{article}
+\usepackage{epsfig}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{xcolor}  
+\usepackage{esint}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,     
+    linkcolor=magenta,      
+    urlcolor=magenta,
+}
+% In case you need to adjust margins:
+\topmargin=-0.45in %
+\evensidemargin=0in %
+\oddsidemargin=0in %
+\textwidth=6.5in %
+\textheight=9.0in %
+\headsep=0.25in %
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand{\jg}[1]{{\color{blue} #1}}
+
+
+\begin{document}
+\begin{center}
+{\bf Homework Problems}\\
+Math 327, Winter 2025\\
+Due 11:30 pm, February 12, 2025
+\end{center}
+
+\begin{center}
+\jg{
+    Jake Gonzales}
+\end{center}
+
+{\bf Instructions:} Please include the full problem statement in your submission.
+All solutions must be written in legible handwriting
+or typed (in each case, the text should be of a reasonable size). Your solutions to all problems should be written in complete sentences, with proper grammatical structure. In all cases where external resources are consulted or used, proper citation must be given. In addition, you must provide information on collaboration with your submission: if you worked with others, or consulted anyone aside from the course staff, in preparing the solutions, their names should be listed; if you didn't work with anyone, please indicate this. 
+If your solutions are not typed, you must scan your written solutions and submit
+the digital copy. When submitting problems through LaTex, the LaTex source file
+(.tex) must be included in the submission. \\
+
+\jg{
+\textbf{Collaborators: N/A }
+}
+
+\begin{enumerate}
+\item (Ross 10.6)
+\begin{enumerate}
+\item Let $(s_n)$ be a sequence such that $|s_{n+1}-s_n| < 2^{-n}$ for all $n \in \mathbb{N}$.
+Prove $(s_n)$ is a Cauchy sequence and hence a convergent
+sequence.
+
+\jg{
+We want to prove that $(s_n)$ is a Cauchy sequence. A sequence is Cauchy if for every $\epsilon > 0$, there exists $N$ such that for all $m, n \geq N$ implies 
+\begin{align*}
+    |s_m - s_n| < \epsilon. 
+\end{align*}
+We want to express $|s_m - s_n|$ in terms of our sequence $(s_n)$. Let us then write, for $m > n$, we have 
+\begin{align*}
+    |s_m - s_n| = s_m - s_{m-1} + s_{m-1} - s_{m-2} + \cdots + s_{n+1} - s_n|. 
+\end{align*}
+By the triangle inequality 
+\begin{align*}
+    |s_m - s_n| \leq |s_m - s_{m-1}| + |s_{m-1} - s_{m-2}| + \cdots + |s_{n+1} - s_n|. 
+\end{align*}
+We are given $|s_{n+1} - s_n| < 2^{-n}$ for all $n \in \mathbb{N}$. Substituting this in gives
+\begin{align*}
+    |s_m - s_n| < 2^{-(m-1)} + 2^{-(m-2)} + \cdots + 2^{-n}. 
+\end{align*}
+The right hand side (powers of 2) which can be written 
+\begin{align*}
+    2^{-n} (1 + 2^{-1} + 2^{-2} + \cdots 2^{-(m-n-1)}).
+\end{align*}
+From this resource\footnote{\url{https://en.wikipedia.org/wiki/Geometric_series}} we can write the sum of the geometric series as 
+\begin{align*}
+    \frac{1-2^{-(m-n}}{1-2^-1} = 2(1-2^{-(m-n)}) < 2.
+\end{align*}
+Therefore, 
+\begin{align*}
+    |s_m
+ - s_n| < 2^{-n} \cdot 2 = 2^{-(n-1)}. 
+\end{align*}
+Now, for any $\epsilon > 0$, we choose $N$ such that $2^{-(N-1)} < \epsilon$. Then for all $m,n \geq N$ implies 
+\begin{align*}
+    |s_m - s_n| < 2^{-(n-1)} \leq 2^{-(N-1)} < \epsilon. 
+\end{align*}
+Thus by definition 10.8 this sequence satisfies the conditions of a Cauchy sequence. Hence $(s_n)$ is a Cauchy sequence and is therefore convergent. 
+\clearpage
+}
+
+\item Is the result in (a) true if we only assume $|s_{n+1} -s_n| < \frac{1}{n}$ for all $n \in \mathbb{N}$.
+
+\jg{
+Let's consider an example of the sequence $|s_{n+1} - s_n| < \frac{1}{n}$ for all $n$. Let $s_n = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}$. We can write this out in our sequence format as
+\begin{align*}
+    |s_{n+1} - s_n| = \left| \left( 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n} + \frac{1}{n+1} \right) - \left( 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}\right) \right| = \frac{1}{n+1}.
+\end{align*}
+Since $\frac{1}{n+1} < \frac{1}{n}$ for all $n$, the condition of the sequence $|s_{n+1} - s_n| < \frac{1}{n}$ is satisfied. 
+
+However, this sequence (the harmonic sequence) is known to diverge as $n$ grows large. For some $\epsilon > 0$, there is no $N$ such that this sequence holds for all $n \geq N$. Its clear to see that $(s_n)$ is not Cauchy and hence not convergent. 
+
+Hence, no the result in part (a) is not true if we have this weaker assumption on our sequence. 
+}
+\end{enumerate}
+\clearpage
+
+\item (Ross 10.7) Let $S$ be a bounded nonempty subset of $\mathbb{R}$ such that $\sup S$ is not in $S$. Prove there is a sequence $(s_n)$ of points in $S$ such that $\lim s_n = \sup S$.
+
+\jg{
+We are given a bounded nonempty subset $S$ of $\mathbb{R}$ with $\sup S$ not in $S$. We want to construct a sequence $(s_n)$ in $S$ that converges to $\sup S$. Since $\sup S$ is not in $S$, we will attempt to approach $S$ from below using elements in $S$. 
+
+Let $s = \sup S$ and let $\epsilon > 0$. Then we know that any $s - \epsilon$ is not an upper bound for $S$ by definition of a supremum. Let's choose $\epsilon = \frac{1}{n}$. Since for each $n \in \mathbb{N}$, $s - \frac{1}{n}$ is not an upper bound for $S$, there exists $s_n \in S$ satisfying: 
+\begin{align*}
+    s - \frac{1}{n} < s_n < s. 
+\end{align*}
+Now consider the sequences $(a_n)_{n=1}^{\infty}$, $(b_n)_{n=1}^{\infty}$, and $(s_n)_{n=1}^{\infty}$ where $a_n = s-\frac{1}{n}$ and $b_n = s$. Then we have a sequence $s_n \in S$ such that 
+\begin{align*}
+    a_n \leq s_n \leq b_n
+\end{align*}
+for all $n$. Furthermore, as $n$ grows large we can observe that 
+\begin{align*}
+    \lim_{n\rightarrow \infty} a_n = \lim_{n\rightarrow \infty} \left(s - \frac{1}{n} \right) = s, \quad \text{and} \quad \lim_{n\rightarrow \infty} b_n = s. 
+\end{align*}
+Then, by the Squeeze Lemma (which we proved in pset3 problem 5 or Ross 8.5), since $a_n \leq s_n \leq b_n$ and $\lim a_n = \lim b_n = s$, it follows that 
+\begin{align*}
+    \lim_{n\rightarrow \infty} s_n = s = \sup S. 
+\end{align*}
+Hence, we have constructed a sequence $(s_n)$ of points in $S$ such that $\lim s_n = \sup S$. 
+}
+\clearpage
+
+\item (Ross 10.8) Let $(s_n)$ be an increasing sequence of positive numbers and
+define
+\begin{align*}
+\sigma_n = \frac{1}{n}(s_1 + s_2 + \cdots + s_n).
+\end{align*}
+Prove $(\sigma_n)$ is an increasing sequence.
+
+\jg{
+We are given $(s_n)$ is an increasing sequence of positive numbers, so we know $s_{n+1} > s_n$ for all $n$. We want to prove that $(\sigma_n)$ is an increasing sequence, i.e., $\sigma_{n+1} > \sigma_n$ for all $n$. 
+
+Make the observation that since $s_{n+1}$ is greater than all the previous terms $(s_1, s_2, \cdots, s_n)$, then 
+\begin{align*}
+    s_{n+1} > \frac{1}{n} (s_1 + s_2 + \cdots + s_n) = \sigma_n.
+\end{align*}
+Thus, $s_{n+1} > \sigma_n$. By definition, we have 
+\begin{align*}
+    \sigma_{n+1} = \frac{1}{n+1} (s_1 + s_2 + \cdots + s_n + s_{n+1}). 
+\end{align*}
+Note that $n \sigma_n = s_1 + s_2 + \cdots + s_n$. Substituting this in above gives us 
+\begin{align*}
+    \sigma_{n+1} = \frac{1}{n+1} (n \sigma_n + s_{n+1}). 
+\end{align*}
+Recall, we established that $s_{n+1} > \sigma_n$. We substitute this into the inequality above to get 
+\begin{align*}
+    \sigma_{n+1} = \frac{1}{n+1} (n \sigma_n + s_{n+1}) > \frac{1}{n+1} (n \sigma_n + \sigma_n). 
+\end{align*}
+Simplifying 
+\begin{align*}
+    \sigma_{n+1} > \frac{1}{n+1} ((n+1) \sigma_n) = \sigma_n 
+\end{align*}
+Thus, $\sigma_{n+1} > \sigma_n$ for all $n$. Hence, we have proven that $(\sigma_n)$ is an increasing sequence. 
+}
+\clearpage
+
+\item (Ross 10.9) Let $s_1 = 1$ and $s_{n+1} = ( \frac{n}{n+1})s^2_n$ for $n\geq
+1$.
+\begin{enumerate}
+\item Find $s_2$, $s_3$ and $s_4$.
+
+\jg{
+\begin{itemize}
+    \item $s_2 = (\frac{1}{2}) s_1^2 = (\frac{1}{2}) (1)^2 = \frac{1}{2}$. 
+    \item $s_3 = (\frac{2}{3}) s_2^2 = (\frac{2}{3}) (\frac{1}{2})^2 = (\frac{2}{3})(\frac{1}{4}) = \frac{1}{6}$. 
+    \item $s_4 = (\frac{3}{4}) s_3^2 = (\frac{3}{4}) (\frac{1}{6})^2 = (\frac{3}{4}) (\frac{1}{36}) = \frac{1}{48}$. 
+\end{itemize}
+}
+
+\item Show $\lim s_n$ exists.
+
+\jg{ 
+To show that $\lim s_n$ exists, we will prove that the sequence $(s_n)$ is bounded and monotone decreasing. 
+
+So we want to prove that 
+\begin{align*}
+    0 < s_{n+1} < s_n \leq 1 \quad \text{for all} \quad  n \geq 1. 
+\end{align*}
+For the base case $n=1$ this holds by part (a) so we have $0 < s_2 < s_1 \leq 1$. 
+
+Now for the inductive step: we assume $0 < s_{n+1} < s_n \leq 1$ holds for some $n \geq 1$. We will show that $0 < s_{n+2} < s_{n+1} \leq 1$. Through the recursive relation of the sequence we have 
+\begin{align*}
+    s_{n+2} = \left(\frac{n+1}{n+2} \right) s^2_{n+1}. 
+\end{align*}
+Since $s_{n+1} \leq 1$, we have
+\begin{align*}
+    s_{n+2} = \left(\frac{n+1}{n+2} \right) s^2_{n+1} \leq \left(\frac{n+1}{n+2} \right) (1)^2 = \left(\frac{n+1}{n+2} \right)  < 1. 
+\end{align*}
+Thus, $s_{n+2} \leq 1$. Then since $s_{n+1} > 0$ and $(n+1)/(n+2) < 1$ we have 
+\begin{align*}
+    s_{n+2} = \left(\frac{n+1}{n+2} \right) s^2_{n+1} < s^2_{n+1} < s_{n+1}.
+\end{align*}
+Hence, $0 < s_{n+2} < s_{n+1}$. By mathematical induction, $0 < s_{n+1} < s_n \leq 1$ holds for all $n \geq 1$.
+
+Thus, by Theorem 10.2 from the textbook, since we have shown that $(s_n)$ is a bounded monotone (decreasing) sequence, then $\lim s_n$ exists. 
+}
+\item Prove $\lim s_n = 0$.
+
+\jg{
+Let $s = \lim s_n$. We have 
+\begin{align*}
+    s_{n+1} = \left(\frac{n}{n+1} \right) s^2_{n+1}. 
+\end{align*}
+For large $n$, we get
+\begin{align*}
+    s = \lim s_{n+1} = \lim \left(\frac{n}{n+1} \right) s^2_{n+1}. 
+\end{align*}
+Since $\lim \frac{n}{n+1} = 1 + \frac{1}{n} = 1$ and $\lim s_n^2 = s^2$, then by Theorem 9.4, the right hand side of the limit equation above is $s^2$. Therefore we can write 
+\begin{align*}
+    s = s^2.
+\end{align*}
+Giving 
+\begin{align*}
+    s^2 - s = 0 \quad \implies \quad s(1-s) = 0. 
+\end{align*}
+Therefore, $s = 0$ or $s = 1$. However, from part (b) we know that $s_n \leq 1$ for all $n \geq 1$ and that its a monotone decreasing sequence, so $s = 1$ is impossible. 
+
+Thus, we have proven that $s = \lim s_n = 0$. 
+}
+\end{enumerate}
+\clearpage
+
+\item (Ross 10.10) Let $s_1 = 1$ and $s_{n+1} = \frac{1}{3}(s_n + 1)$ for $n \geq
+1$.
+\begin{enumerate}
+\item Find $s_2$, $s_3$ and $s_4$.
+
+\jg{
+\begin{itemize}
+    \item $s_2 = \frac{1}{3}(s_1 + 1) = \frac{1}{3}(2) = \frac{2}{3}$. 
+    \item $s_3 = \frac{1}{3} (s_2 + 1) = \frac{1}{3} (\frac{2}{3} + 1) = (\frac{1}{3}) (\frac{5}{3}) = \frac{5}{9}$. 
+    \item $_4 = \frac{1}{3}(s_3 + 1) = \frac{1}{3} (\frac{5}{9} + 1) = \frac{1}{3} (\frac{14}{9}) = \frac{14}{27}$.
+\end{itemize}
+}
+
+\item Use induction to show $s_n > \frac{1}{2}$ for all $n$.
+
+\jg{
+For the base case $n=1$ we have $s_1 = 1 > \frac{1}{2}$, which holds. 
+
+For the inductive step, assume that for some $k \geq 1$, $s_k > \frac{1}{2}$. We want to show that $s_{k+1} > \frac{1}{2}$. We are given 
+\begin{align*}
+    s_{k+1} = \frac{1}{3} (s_k + 1). 
+\end{align*}
+Since $s_k > \frac{1}{2}$ we can substitute to get 
+\begin{align*}
+    s_{k+1} = \frac{1}{3} (s_k + 1) > \frac{1}{3}(\frac{1}{2} + 1) = \frac{1}{2}. 
+\end{align*}
+Thus, $s_{k+1} > \frac{1}{2}$. Hence, by the principal of mathematical induction, $s_n > \frac{1}{2}$ for all $n$. 
+}
+
+\item Show $(s_n)$ is a decreasing sequence.
+
+\jg{
+To show $(s_n)$ is decreasing we need to prove that $s_{n+1} < s_n$ for all $n$. We are given that 
+\begin{align*}
+    s_{n+1} = \frac{1}{3} (s_n + 1). 
+\end{align*}
+Subtract $s_n$ from both sides
+\begin{align*}
+    s_{n+1} - s_n = \frac{1}{3} (s_n + 1) - s_n.
+\end{align*}
+Simplifying further and using the fact that $s_n > \frac{1}{2}$ from part (b): 
+\begin{align*}
+    s_{n+1} - s_n = \frac{1}{3} - \frac{2}{3} s_n < \frac{1}{3} - \frac{2}{3} \cdot \frac{1}{2}. 
+\end{align*}
+Then, 
+\begin{align*}
+    s_{n+1} - s_n < \frac{1}{3} - \frac{1}{3} = 0. 
+\end{align*}
+Thus, $s_{n+1} - s_n < 0 \implies s_{n+1} < s_n$. 
+
+Therefore, the inequality $s_{n+1} < s_n $ holds for all $n$ and the sequence is decreasing. 
+}
+\item Show $\lim s_n$ exists and find $\lim s_n$.
+
+\jg{ 
+Since $(s_n)$ is bounded and decreasing from parts (b) and (c), by Theorem 10.2, we know the sequence converges and $\lim s_n$ exists. 
+
+To find the limit we can look at the recurrence relation
+\begin{align*}
+    s_{n+1} = \frac{1}{3} (s_n+1) 
+\end{align*}
+Taking the limit as $n$ grows large
+\begin{align*}
+    L = \frac{1}{3} (L+1). 
+\end{align*}
+Solving for $L$ gives $L = \frac{1}{2}$. 
+}
+
+\end{enumerate}
+\clearpage
+
+\item (Ross 10.11) Let $t_1 = 1$ and $t_{n+1} = [1 - \frac{1}{4n^2} ] \cdot t_n$
+for $n \geq 1$.
+\begin{enumerate}
+\item Show $\lim t_n$ exists.
+
+\jg{
+Similar to problem 4 or Ross 10.9, we can use induction to show that $(t_n)$ is a bounded and monotone decreasing sequence. 
+
+We first want to show the sequence $(t_n)$ is decreasing. Thus, we want to prove that $t_{n+1} < t_n$ for all $n \geq 1$. 
+
+For the base case $n=1$ we have 
+\begin{align*}
+    t_2 = \left[ 1 - \frac{1}{4(1)^2}\right] \cdot t_1 = \left[ 1 - \frac{1}{4}\right] \cdot 1 = \frac{3}{4} < 1 = t_1. 
+\end{align*}
+Thus, $t_2 < t_1$. 
+For the inductive step, assume $t_{k+1} < t_k$ for some $k \geq 1$. Then
+\begin{align*}
+    t_{k+2} = \left[ 1 - \frac{1}{4(k+1)^2}\right] \cdot t_{k+1}. 
+\end{align*}
+Since $1 - \frac{1}{4(k+1)^2} < 1$ and $t_{k+1} < t_k$ it follows that
+\begin{align*}
+    t_{k+2} = \left[ 1 - \frac{1}{4(k+1)^2} \right] \cdot t_{K+1} < t_{k+1}. 
+\end{align*}
+Thus, $t_{k+1} < t_{k+1}$. Hence, by mathematical induction, we've shown that $t_{n+1} < t_n$ for all $n \geq 1$, meaning $(t_n)$ is monotone decreasing. 
+
+Now, since $t_1 = 1$ and $t_{n+1} = [1 - \frac{1}{4n^2}] \cdot t_n$, we know that $1 - \frac{1}{4n^2}$ will always be positive for $n \geq 1$. Thus, $t_n > 0$ for all $n \geq 1$. Thus $t_n$ is bounded below by 0. 
+
+By the reoccurrence relation that was given $t_{n+1} = [1-\frac{1}{4n^2}] \cdot t_n$, since $1 - \frac{1}{4n^2} < $, then it follows $t_{n+1} < t_n$, which we have shown explicitly above. Since $t_1 = 1$, and we know the sequence is monotone decreasing, then $t_n \leq 1$ for all $n \geq 1$. Thus, $t_n$ is bounded above by $1$. 
+
+Hence, $0 < t_n \geq 1$ for all $n \geq 1$ and $t_n$ is bounded. 
+
+Therefore, we have shown that the sequence $(t_n)$ is bounded and monotone decreasing, therefore it is a Cauchy sequence, and therefore convergent. Meaning we have shown that $\lim t_n$ exists. 
+}
+
+\item What do you think $\lim t_n$ is?
+
+\jg{
+We can take the limit as
+\begin{align*}
+    \lim_{n \rightarrow \infty} t_n = \lim_{n \rightarrow \infty} \left[ 1-\frac{1}{4n^2}\right] \cdot \lim_{n \rightarrow \infty} t_n
+\end{align*}
+Even though the $\lim_{n \rightarrow \infty} \left[ 1-\frac{1}{4n^2}\right] = 1$, we get
+\begin{align*}
+    \lim_{n \rightarrow \infty} t_n = 1 \cdot \lim_{n \rightarrow \infty} t_n.
+\end{align*}
+Which gets us no where. What I think is, by the way the question is worded, is that the limit is a difficult one. And I think we ought to appreciate the fact that we can determine this sequence has a limit that exists through the definition of a Cauchy sequence. Thus allowing us to conclude with certainty that sequences converge \emph{without} knowing the limit. As for this case, the limit might be difficult to arrive at. 
+}
+\end{enumerate}
+\end{enumerate}
+
+\clearpage
+\begin{center}
+\vspace*{\fill}
+{\Large End of Homework}
+\vspace*{\fill}
+\end{center}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
