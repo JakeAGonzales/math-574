@@ -1,0 +1,439 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -*- LaTeX -*- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%**start of header
+\documentclass [10pt]{article}
+\usepackage{epsfig}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{xcolor}  
+\usepackage{esint}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+% In case you need to adjust margins:
+\topmargin=-0.45in %
+\evensidemargin=0in %
+\oddsidemargin=0in %
+\textwidth=6.5in %
+\textheight=9.0in %
+\headsep=0.25in %
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand{\jg}[1]{{\color{blue} #1}}
+
+\begin{document}
+\begin{center}
+{\bf Homework Problems}\\
+Math 327, Winter 2025\\
+Due 11:30 pm, February 20, 2025
+\end{center}
+
+\begin{center}
+\jg{
+    Jake Gonzales}
+\end{center}
+
+{\bf Instructions:} Please include the full problem statement in your submission.
+All solutions must be written in legible handwriting
+or typed (in each case, the text should be of a reasonable size). Your solutions to
+all problems should be written in complete sentences, with proper grammatical
+structure.
+In all cases where external resources are consulted or used, proper citation must
+be given. In addition,
+you must provide information on collaboration with your submission: if you worked with others,
+or consulted anyone aside from the course staff, in preparing the solutions, their
+names should be
+listed; if you didn't work with anyone, please indicate this.
+If your solutions are not typed, you must scan your written solutions and submit
+the digital copy. When submitting problems through LaTex, the LaTex source file
+(.tex) must be included in the submission.
+
+\jg{
+\textbf{Collaborators: N/A }
+}
+
+\begin{enumerate}
+\item (Ross 11.2)
+Consider the sequences defined as follows:
+$$
+a_n=(-1)^n, \quad b_n=\frac{1}{n}, \quad c_n=n^2, \quad d_n=\frac{6 n+4}{7 n-3} .
+$$
+\begin{enumerate}
+\item For each sequence, give an example of a monotone subsequence.
+
+\jg{
+\begin{itemize}
+    \item $a_n = (-1)^n$ is a sequence that alternates between $-1$ and $1$. An example of a monotone subsequence is either the constant sequence $1, 1, \cdots$ for all even indexed terms, i.e. $a_{2k}$ or $-1, -1, \cdots$ for all odd indexed terms, i.e. $a_{2k-1}$ of the sequence $a_n$. 
+
+    \item $b_n = \frac{1}{n}$ is a strictly decreasing sequence. Therefore, any subsequence of $b_n$ is monotone and the sequence itself is monotone.
+
+    \item $c_n = n^2$ is strictly increasing. Therefore, any subsequence of $c_n$ is monotone and the sequence itself is monotone. 
+
+    \item $d_n=\frac{6 n+4}{7 n-3}$ clearly converges to $\frac{6}{7}$ and is monotone decreasing for $n \geq 1$. Therefore, the sequence itself is monotone. 
+\end{itemize}
+}
+\item For each sequence, give its set of subsequential limits.
+
+\jg{
+\begin{itemize}
+    \item $a_n = (-1)^n$: The subsequential limits are $-1$ and $1$, thus the set if $\{ -1, 1\}$. 
+    \item $b_n = \frac{1}{n}$: The sequence converges to $0$, so the only subsequential limit is 0, thus, the set is $\{ 0 \}$. 
+    \item $c_n = n^2$: The sequence diverges to $+ \infty$, so the only subsequential limit is $+ \infty$, thus, the set is $\{ \infty \}$. 
+    \item  $d_n=\frac{6 n+4}{7 n-3}$: The sequence converges to $\frac{6}{7}$, so the only subsequential limit is $\frac{6}{7}$, thus the set is $\{ \frac{6}{7} \}$. 
+\end{itemize}
+}
+
+\item For each sequence, give its $\limsup$ and $\liminf$.
+
+\jg{
+\begin{itemize}
+    \item $a_n = (-1)^n$: The largest subsequential limit is 1 and smallest is -1. Thus $\limsup a_n = 1$ and $\liminf a_n = -1$. 
+    \item $b_n = \frac{1}{n}$: The sequence converges to 0, so $\limsup b_n = \liminf b_n = 0$. 
+    \item $c_n = n^2$: The sequence diverges to $+ \infty$ so $\limsup c_n = \liminf c_n = + \infty$.
+    \item $d_n=\frac{6 n+4}{7 n-3}$: The sequence converges to $\frac{6}{7}$, so $\limsup d_n = \liminf d_n  = \frac{6}{7}$. 
+\end{itemize}
+}
+
+\item Which of the sequences converges? diverges to $+\infty$ ? diverges to $-\infty$ ?
+
+\jg{
+\begin{itemize}
+\item $a_n = (-1)^n$: The sequence does not converge, or diverge to $+ \infty$ or $- \infty$. It oscillates between $-1$ and $1$. 
+
+\item $b_n = \frac{1}{n}$: The sequence converges to 0. 
+
+\item $c_n = n^2$: The sequence diverges to $+ \infty$. 
+
+\item $d_n=\frac{6 n+4}{7 n-3}$: The sequence converges to $\frac{6}{7}$.
+\end{itemize}
+
+}
+\item Which of the sequences is bounded?
+\jg{
+\begin{itemize}
+\item $a_n = (-1)^n$: The sequence is bounded, as $|a_n| \leq 1$ for all $n$. 
+
+\item $b_n = \frac{1}{n}$: The sequence is bounded, as $|b_n| \leq 1$ for all $n$. 
+
+\item $c_n = n^2$: The sequence is unbounded, as $c_n \rightarrow + \infty$.
+
+\item $d_n=\frac{6 n+4}{7 n-3}$: The sequence is bounded, between the limit $\frac{6}{7}$ for large $n$ and $\frac{5}{2}$ for $n=1$. 
+\end{itemize}
+}
+
+\clearpage
+\end{enumerate}
+\item (Ross 11.7) Let $(r_n)_{n=1}^{\infty}$ be an enumeration of the set, $\mathbb{Q}$, of all rational numbers. Show there exists a subsequence, $(r_{n_k})$
+such that $\lim_{k \to \infty} r_{n_k} = +\infty$.
+
+\jg{
+We are given that $(r_n)$ is an enumeration of rational numbers $\mathbb{Q}$, meaning that every rational number appears at least once in the sequence. By the density of $\mathbb{Q}$, for any real number $M$, there is always a larger rational number (or infinitely many) greater than $M$. 
+
+Now, we want to show that there exists a subsequence $(r_{n_k})$ such that $\lim_{k \to \infty} +\infty$. To do this, we need to show that the sequence $(r_n)$ is unbounded above. Meaning by definition for any real number $M$, there exists a term in the sequence $r_n$ such that $r_n > M$. Since $(r_n)$ is an enumeration of $\mathbb{Q}$, there are rational numbers greater than $M$ that must be in the sequence $(r_n)$. Therefore, $(r_n)$ is unbounded above. 
+
+We now apply \textbf{Theorem 11.2 (ii)} which states that if a sequence is unbounded above, it has a subsequence with limit $+ \infty$. We directly apply this, so since $(r_n)$ is unbounded above, there exists a subsequence $(r_{n_k})$ such that 
+\begin{align*}
+    \lim_{k \to \infty} r_{n_k} =  +\infty. 
+\end{align*}
+Note: the problem is probably done here since we have shown there exists a subsequence $(r_{n_k})$
+such that $\lim_{k \to \infty} r_{n_k} = +\infty$, but I will continue with the proof and construction just to be explicit. 
+
+Following the proof structure for Theorem 11.2 from the book, first, choose $n_1$ to be an index such that $r_{n_1} > 1$. This is possible since $\mathbb{Q}$ contains rationals larger than 1, and $(r_n)$ enumerates all of $\mathbb{Q}$.
+
+For $k \geq 2$, choose $n_k > n_{k-1}$ such that $r_{n_k} > \max\{r_{n_{k-1}}, k\}$. This is possible since $(r_n)$ is unbounded above.
+
+The subsequence $(r_{n_k})$ constructed this way is strictly increasing and satisfies $r_{n_k} > k$ for all $k$. So for this subsequence, as $k \rightarrow \infty$, we have $r_{n_k} \rightarrow \infty$. Therefore, 
+\begin{align*}
+   \lim_{k \to \infty} r_{n_k} = +\infty. 
+\end{align*}
+}
+
+\clearpage
+\item (Ross 12.4) Show $\lim \sup \left(s_n+t_n\right) \leq \limsup s_n+\limsup
+t_n$ for bounded sequences $\left(s_n\right)$ and $\left(t_n\right)$. 
+
+Hint: First show
+\begin{align*}
+\sup \left\{s_n+t_n: n>N \right \} \leq \sup \left\{s_n: n>N\right\}+\sup \left\{t_n: n>N\right\}. 
+\end{align*}
+Then apply Exercise 9.9 (c). 
+
+\jg{
+We will follow the hint and first show that 
+\begin{align*}
+\sup \left\{s_n+t_n: n>N \right \} \leq \sup \left\{s_n: n>N\right\}+\sup \left\{t_n: n>N\right\}. 
+\end{align*}
+For any $n > N$ we have by definition
+\begin{align*}
+    s_n \leq \sup \{ s_k : k > N \} \quad \text{and} \quad t_n \leq \sup \{ t_k : k > N\}. 
+\end{align*}
+Adding the inequalities we get 
+\begin{align*}
+    s_n + t_n \leq \sup \{ s_k : k > N \} + \leq \sup \{ t_k : k > N\}.
+\end{align*}
+The right hand side of the above inequality is an upper bound for $s_n + t_n$ for all $n > N$. Therefore, 
+\begin{align*}
+\sup \left\{s_n+t_n: n>N \right \} \leq \sup \left\{s_n: n>N\right\}+\sup \left\{t_n: n>N\right\}. 
+\end{align*}
+Recall, Exercise Ross 9.9 (c) states that if $s_n \leq t_n$ for all $n > N_0$ and $\lim s_n$ and $\lim t_n$ exist, then $\lim s_n \leq \lim t_n$. Using this logic, we will take the limit of the above inequality. By \textbf{Definition 10.6} from the textbook we know that 
+\begin{align*}
+    \lim \sup s_n = \lim_{N \rightarrow \infty} \sup \{ s_n : n > N \}.
+\end{align*}
+So then, taking the limit as $n \rightarrow \infty$ on both sides gives us 
+\begin{align*}
+\lim_{N \rightarrow \infty} \sup \left\{s_n+t_n: n>N \right \} \leq \lim_{N \rightarrow \infty} \sup \left\{s_n: n>N\right\} + \lim_{N \rightarrow \infty} \sup \left\{t_n: n>N\right\}. 
+\end{align*}
+Hence, for bounded sequences $(s_n)$ and $(t_n)$ we shown that
+\begin{align*}
+    \lim \sup \left(s_n+t_n\right) \leq \limsup s_n+\limsup
+t_n.
+\end{align*}
+}
+\clearpage
+\item (Ross 12.6) Let $\left(s_n\right)$ be a bounded sequence, and let $k$ be a nonnegative real number.
+\begin{enumerate}
+\item Prove $\lim \sup \left(k s_n\right)=k \cdot \lim \sup s_n$.
+
+\jg{
+First let's define the limit superior as 
+\begin{align*}
+    \lim \sup s_n = \lim_{N \rightarrow \infty} \sup \{ s_n : n > N \} = \sup S
+\end{align*}
+where $S$ is the set of all subsequential limits of $(s_n)$. Let $L = \lim \sup s_n$, then $L = \lim \sup \{ s_n : n > N\}$. Since $k$ is a nonnegative real number then multiplying $k$ preservers the order of the sequence. Therefore 
+\begin{align*}
+    \sup \{ k s_n : n > N\} = k \cdot \sup \{ s_n : n > N \}. 
+\end{align*}
+If we take the limit as $N \rightarrow \infty$ then 
+\begin{align*}
+    \lim \sup (k s_n) = \lim_{N \rightarrow \infty} k \cdot \sup \{ s_n : n > N \} = k \cdot \lim_{N \rightarrow \infty} \sup \{ s_n : n > N \}. 
+\end{align*}
+By definition, $\lim_{N \rightarrow \infty} \sup \{s_n : n > N \} = L$ so, 
+\begin{align*}
+    \lim \sup (k s_n) = k \cdot L. 
+\end{align*}
+Hence, $\lim \sup (k s_n) = k \cdot \lim \sup s_n$ for $k \geq 0$. 
+}
+\item Do the same for $\liminf$. 
+
+\jg{
+First let's define the limit infimum as 
+\begin{align*}
+    \lim \inf s_n = \lim_{N \rightarrow \infty} \inf \{ s_n : n > N \} = \inf S
+\end{align*}
+where $S$ is the set of all subsequential limits of $(s_n)$. 
+
+Let $l = \lim \inf s_n$, then $l = \lim_{N \rightarrow \infty} \inf \{s_n : n > N \}$. Since $k$ is a nonnegative real number then multiplying $k$ preserves teh order of the sequence. Therefore, 
+\begin{align*}
+    \inf \{ k s_n : n > N \} = k \cdot \inf \{ s_n : n > N \}. 
+\end{align*}
+If we take the limit as $N \rightarrow \infty$ then 
+\begin{align*}
+    \lim \in (k s_n) = \lim_{N \rightarrow \infty} k \cdot \inf \{ s_n : n > N \} = k \cdot \lim_{N \rightarrow \infty} \inf \{ s_n : n > N \}. 
+\end{align*}
+By definition, $\lim_{N \rightarrow \infty} \inf \{s_n : n > N \} = l$, so 
+\begin{align*}
+    \lim \inf (k s_n) = k \cdot l. 
+\end{align*}
+Hence, $\lim \inf k s_n = k \cdot \lim \inf s_n$ for $k \geq 0$. 
+}
+
+\item What happens in (a) and (b) if $k<0$ ?
+
+\jg{
+When $k<0$, multiplying by $k$ would reverse the order of the sequence. So we get 
+\begin{align*}
+    \sup \{ k s_n : n > N \} = k \cdot \inf \{ s_n : n > N \}
+\end{align*}
+Taking the limit 
+\begin{align*}
+    \lim \sup k s_n = \lim_{N \rightarrow \infty} k \cdot \inf \{ s_n : n > N \} = k \cdot \lim_{N \rightarrow \infty} \inf \{ s_n : n > N \} 
+\end{align*}
+By definition, $\lim_{N \rightarrow \infty} \inf \{ s_n : n > N \} = l$ so
+\begin{align*}
+    \lim \sup (k s_n) = k \cdot l
+\end{align*}
+Similarly, for (b) we can arrive at the fact that $\lim \inf k s_n = k \cdot L$. 
+
+So when $k < 0$, they are swapped since $k$ reverses the order of the sequence. 
+}
+\end{enumerate}
+\clearpage
+
+\item (Ross 12.10) Prove $\left(s_n\right)$ is bounded if and only if $\limsup|
+s_n|<+\infty$.
+
+\jg{
+Let's do the forward direction: we want to prove if $(s_n)$ bounded, then $\limsup |s_n| < + \infty$. 
+
+Since $(s_n)$ is bounded, there exists $M > 0$ such that $|s_n| \leq M$ for all $n \in \mathbb{N}$. The $\limsup$ of a sequence $(|s_n|)$ is 
+\begin{align*}
+    \limsup |s_n| = \lim_{N \rightarrow \infty} \sup \{ |s_n| : n > N \}.
+\end{align*}
+Since $(s_n)$ is bounded, $|s_n| \leq M$ for all $n$. This means that for any $N$, the set $\{|s_n| : n > N \}$ is also bounded above by $M$. Therefore,
+\begin{align*}
+    \sup \{ |s_n| : n > N \} \leq M \quad \text{for all} \quad N.
+\end{align*}
+If we take the limit we get
+\begin{align*}
+    \limsup |s_n| = \lim_{N \rightarrow \infty} \sup \{ |s_n| : n > N \} \leq M. 
+\end{align*}
+Since $M$ is a finite real number, $\limsup |s_n|$ is also finite. Hence, $\limsup |s_n| < + \infty$. 
+
+Now let's prove the reverse direction: If $\limsup |s_n| < + \infty$, then $(s_n)$ is bounded. 
+
+Let $L = \limsup |s_n|$. So by our assumption we have $L < + \infty$. 
+
+By the definition we know that
+\begin{align*}
+L = \lim_{N \rightarrow \infty} \sup \{ |s_n| : n > N \}
+\end{align*}
+
+Since this limit exists and equals $L$, for any $\epsilon > 0$, there exists some $N_0$ such that for all $N \geq N_0$: 
+\begin{align*}
+    \sup \{|s_n| : n > N \} < L + \epsilon
+\end{align*}
+Let $\epsilon = 1$. This means that for all $n > N_0$ we have $|s_n| < L+1$. Then if we consider the finite set of terms $\{ |s_1|, \cdots, |s_{N_0}|\}$ and let $M_0 = \text{max}\{ |s_1|, \cdots, |s_{N_0}|\}$. Then if we set $M = \text{max} \{M_0, L+1\}$, then $|s_n| \leq M$ for all $n$. Therefore, $(s_n)$ is bounded. 
+
+}
+
+\clearpage
+\item (Ross 12.12) Let $\left(s_n\right)$ be a sequence of nonnegative numbers,
+and for each $n$ define $\sigma_n=\frac{1}{n}\left(s_1+s_2+\cdots+s_n\right)$.
+\begin{enumerate}
+\item Show
+\begin{align*}
+\liminf s_n \leq \liminf \sigma_n \leq \limsup \sigma_n \leq \limsup s_n .
+\end{align*}
+Hint: For the last inequality, show first that $M>N$ implies
+$$
+\sup \left\{\sigma_n: n>M\right\} \leq \frac{1}{M}\left(s_1+s_2+\cdots+s_N\right)+\sup \left\{s_n: n>N\right\} \text {. }
+$$
+
+\jg{
+We will first show $\limsup \sigma_n \leq \limsup s_n$. We will follow and show the hint. So we have that 
+\begin{align*}
+   \sup \left\{\sigma_n: n>M\right\} &= \sup \left\{ \frac{1}{n} (s_1 + \cdots + s_n) : n > M   \right\} \\
+   &= \sup \left\{\frac{1}{n} (s_1 + \cdots + s_N) + \frac{1}{n} (s_{N+1} + \cdots + s_n) : n > M \right\} 
+\end{align*}
+
+Directly applying the result from problem 3 or Ross 12.4 we get 
+\begin{align*}
+   \sup \left\{\sigma_n: n>M\right\} & \leq \sup \left\{ \frac{1}{n} (s_1 + \cdots + s_N) : n > M \right\} + \sup \left\{ \frac{1}{n} (s_{N+1} + \cdots + s_n ) : n > M \right\} \\
+   & \leq \frac{1}{M} (s_1 + \cdots + s_N) + \sup \left\{ \frac{1}{n} (s_{N+1} + \cdots + s_n ) : n > M \right\}
+\end{align*}
+
+Where in the second inequality we use the fact that all $s_i$ in $\sigma_n$ are nonnegative and $n > M$ so we know $\frac{1}{n} \leq \frac{1}{M}$ for all $n > M$. For the second term we have for any $n > M$:
+\begin{align*}
+\frac{1}{n}(s_{N+1} + \cdots + s_n) &\leq \frac{1}{n}(n-N) \cdot \sup\{s_k: k > N\} \\
+&= \frac{n-N}{n} \cdot \sup\{s_k: k > N\} \\
+&\leq \sup\{s_k: k > N\}
+\end{align*}
+Therefore, 
+\begin{align*}
+   \sup \left\{\sigma_n: n>M\right\} \leq \frac{1}{M} (s_1 + \cdots + s_N) + \sup \{s_n : n > N \}
+\end{align*}
+Hence, we have $\sup \{ \sigma_n : n > M \} \leq \frac{1}{M} (s_1 + \cdots + s_N) + \sup \{s_n : n > N \}$ for any $ M > N$. Now, we take the limit for fixed $N$ as $M \rightarrow \infty$: 
+\begin{align*}
+    \limsup \sigma_n &\leq \lim_{M \rightarrow \infty} \frac{1}{M} (s_1 + \cdots + s_N) + \lim_{M \rightarrow \infty} \sup \{ s_N : n > N \} \\
+    & = 0 + \sup \{ s_N : n > N \} 
+\end{align*}
+since $\frac{1}{M}$ goes to $0$ and $\sup \{ s_N : n > N \}$ doesn't depend on $M$. Taking the limit as $N \rightarrow \infty$: 
+\begin{align*}
+    \lim_{N \rightarrow \infty} \limsup \sigma_n \leq \lim_{N \rightarrow \infty} \sup \{ s_N : n > N \}
+\end{align*}
+hence,
+\begin{align*}
+    \limsup \sigma_n \leq \limsup s_n. 
+\end{align*}
+Note: I could not figure out a clean way to show the other inequality. I will say that $\liminf \sigma_n \leq \limsup \sigma_n$ should hold for any sequence in general (I think we even proved this expliclty on a separate homework), so by transitive property we could conclude that 
+\begin{align*}
+    \liminf s_n \leq \liminf \sigma_n \leq \limsup \sigma_n \leq \limsup s_n.
+\end{align*}
+}
+
+\item Show that if $\lim s_n$ exists, then $\lim \sigma_n$ exists and $\lim \sigma_n=$ $\lim s_n$.
+
+\jg{
+We are given that $\lim s_n$ exists, let $L = \lim s_n$. By \textbf{Theorem 10.7} this means
+\begin{align*}
+    \liminf s_n = \lim s_n  = \limsup s_n = L
+\end{align*}
+From part (a), we have
+\begin{align*}
+\liminf s_n \leq \liminf \sigma_n \leq \limsup \sigma_n \leq \limsup s_n
+\end{align*}
+
+Substituting the above we get
+\begin{align*}
+L \leq \liminf \sigma_n \leq \limsup \sigma_n \leq L
+\end{align*}
+Therefore we get
+\begin{align*}
+L = \liminf \sigma_n = \limsup \sigma_n = L
+\end{align*}
+
+Since $\liminf \sigma_n = \limsup \sigma_n$, the limit $\lim \sigma_n$ exists, and
+\begin{align*}
+\lim \sigma_n = L = \lim s_n
+\end{align*}
+Therefore, if $\lim s_n$ exists, then $\lim \sigma_n$ also exists and equals $\lim s_n$.
+
+}
+\item Give an example where $\lim \sigma_n$ exists, but $\lim s_n$ does not
+exist.
+
+\jg{
+Consider a sequence $(s_n)$ defined as
+\begin{align*}
+s_n = 
+\begin{cases} 
+1 & \text{if } n \text{ is odd} \\
+0 & \text{if } n \text{ is even}
+\end{cases}
+\end{align*}
+The sequence simply alternates between $1$ and $0$ so clearly it doesn't converge. We have $\liminf s_n = 0$ and $\limsup s_n = 1$, meaning that $\lim s_n$ does not exist. Now let's consider $\sigma_n = \frac{1}{n} (s_1 + \cdots + s_n)$. For odd $n$ or $2k + 1$ we have 
+\begin{align*}
+    \sigma_{2k+1} = \frac{1}{2k+1} (s_1 + \cdots + s_{2k+1})
+\end{align*}
+here, $(s_1 + \cdots + s_{2k+1}) = k + 1$. So, 
+\begin{align*}
+    \sigma_{2k+1} = \frac{k+1}{2k+1}.
+\end{align*}
+For even $n = 2k$
+\begin{align*}
+    \sigma_{2k} &= \frac{1}{2k} (s_1 + \cdots + s_{2k}) \\
+    &= \frac{k}{2k} = \frac{1}{2}
+\end{align*}
+And as $k \rightarrow \infty$ for odd $n$ we have 
+\begin{align*}
+    \lim_{k \rightarrow \infty} \frac{k+1}{2k+1} = \frac{1}{2}. 
+\end{align*}
+So therefore, $\lim_{n \rightarrow \infty} \sigma_n = \frac{1}{2}$. Therefore we have given an example of a sequence $(s_n)$ that does not converge i.e. $\lim s_n$ does not exist, but $\lim \sigma_n$ does. 
+}
+\end{enumerate}
+\end{enumerate}
+
+\clearpage
+\begin{center}
+\vspace*{\fill}
+{\Large End of Homework}
+\vspace*{\fill}
+\end{center}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
