@@ -1,0 +1,367 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -*- LaTeX -*- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%**start of header
+\documentclass [10pt]{article}
+\usepackage{epsfig}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{esint}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+\usepackage{xcolor}  
+
+\newcommand{\jg}[1]{{\color{blue} #1}}
+
+% In case you need to adjust margins:
+\topmargin=-0.45in %
+\evensidemargin=0in %
+\oddsidemargin=0in %
+\textwidth=6.5in %
+\textheight=9.0in %
+\headsep=0.25in %
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+
+
+\begin{document}
+
+\begin{center}
+{\bf Homework Problems}\\
+Math 327, Winter 2025\\
+Due 11:30 pm, March 5, 2025
+\end{center}
+
+\begin{center}
+\jg{
+    Jake Gonzales}
+\end{center}
+
+
+{\bf Instructions:} Please include the full problem statement in your submission.
+All solutions must be written in legible handwriting
+or typed (in each case, the text should be of a reasonable size). Your solutions to
+all problems should be written in complete sentences, with proper grammatical
+structure.
+In all cases where external resources are consulted or used, proper citation must
+be given. In addition,
+you must provide information on collaboration with your submission: if you worked with others,
+or consulted anyone aside from the course staff, in preparing the solutions, their
+names should be
+listed; if you didn't work with anyone, please indicate this.
+If your solutions are not typed, you must scan your written solutions and submit
+the digital copy. When submitting problems through LaTex, the LaTex source file
+(.tex) must be included in the submission. \\
+
+
+\jg{
+\textbf{Collaborators: N/A }
+}
+
+\begin{enumerate}
+
+\item (Ross 14.13) We have seen that it is often a lot harder to find the value of
+an infinite sum than to show it exists. Here are some sums that can be handled.
+
+\begin{enumerate}
+\item Calculate $\sum_{n=1}^{\infty}\left(\frac{2}{3}\right)^n$ and $\sum_{n=1}^{\infty}\left(-\frac{2}{3}\right)^n$.
+
+\jg{
+Observe that both series are geometric series of the form $\sum_{n=1}^\infty r^n$ where $| r | < 1$. The sum of an infinite series is given by $\frac{r}{1-r}$. We can use this to calculate the following series. First,
+\begin{align*}
+    \sum_{n=1}^{\infty}\left(\frac{2}{3}\right)^n = \frac{\frac{2}{3}}{1 - \frac{2}{3}} = 2. 
+\end{align*}
+And secondly, 
+\begin{align*}
+    \sum_{n=1}^{\infty}\left(-\frac{2}{3}\right)^n = \frac{-\frac{2}{3}}{1 - (-\frac{2}{3})} = -\frac{2}{5}
+\end{align*}
+Thus, we've shown the calculated sums. 
+}
+
+
+\item Prove $\sum_{n=1}^{\infty} \frac{1}{n(n+1)}=1$. Hint: Note that $\sum_{k=1}^n \frac{1}{k(k+1)}=$ $\sum_{k=1}^n\left[\frac{1}{k}-\frac{1}{k+1}\right]
+$.
+
+\jg{
+We are given the hint to write $\sum_{n=1}^{\infty} \frac{1}{n(n+1)}=1$ as the telescoping series $\sum_{n=1}^{\infty} \frac{1}{n} - \frac{1}{n+1}$. 
+
+We can expand the sum as 
+\begin{align*}
+    \sum_{n=1}^{N} \frac{1}{n} - \frac{1}{n+1} = \left(\frac{1}{1} - \frac{1}{2} \right) + \left(\frac{1}{2} - \frac{1}{3} \right) + \left(\frac{1}{3} - \frac{1}{4} \right) + \cdots + \left(\frac{1}{N} - \frac{1}{N+1} \right)
+\end{align*}
+Most of the terms cancel out, giving us
+\begin{align*}
+    \sum_{n=1}^{N} \frac{1}{n} - \frac{1}{n+1} = 1 - \left( \frac{1}{N+1}\right).
+\end{align*}
+Taking the limit as $N \rightarrow \infty$:
+\begin{align*}
+    \lim_{N \rightarrow \infty} \left( 1 - \frac{1}{N+1}\right) = 1- 0 = 1.
+\end{align*}
+Thus, we have finished the proof. 
+
+}
+\item Prove $\sum_{n=1}^{\infty} \frac{n-1}{2^{n+1}}=\frac{1}{2}$. Hint:
+Note $\frac{k-1}{2^{k+1}}=\frac{k}{2^k}-\frac{k+1}{2^{k+1}}$.
+
+
+\jg{
+Using the hint, we can write the series as 
+\begin{align*}
+    \sum_{n=1}^{\infty} \frac{n-1}{2^{n+1}} = \sum_{n=1}^{\infty} \frac{n}{2^n} - \frac{n+1}{2^{n+1}}. 
+\end{align*}
+This is a telescoping series. Let's write out the first few terms: 
+\begin{align*}
+    \sum_{n=1}^{\infty} \frac{n}{2^n} - \frac{n+1}{2^{n+1}} = \left(\frac{1}{2^1} - \frac{2}{2^2} \right) + \left(\frac{2}{2^2} - \frac{3}{2^3} \right) + \left( \frac{3}{2^3} - \frac{4}{2^4}\right) + \cdots \left( \frac{1}{2} - \frac{N+1}{2^{N+1}} \right)
+\end{align*}
+Taking the limit as $N \rightarrow \infty$: 
+\begin{align*}
+    \lim_{N\rightarrow \infty} \left( \frac{1}{2} - \frac{N+1}{2^{N+1}} \right) = \frac{1}{2} - 0 = \frac{1}{2}
+\end{align*}
+
+}
+\item Use (c) to calculate $\sum_{n=1}^{\infty} \frac{n}{2^n}$.
+
+\jg{
+
+We can write 
+\begin{align*}
+   \sum_{n=1}^{\infty}  \frac{n-1}{2^{n+1}} = \sum_{n=1}^{\infty} \left( \frac{n}{2^{n+1}} - \frac{1}{2^{n+1}}\right). 
+\end{align*}
+Splitting the series into two parts using part(c), 
+\begin{align*}
+    \sum_{n=1}^{\infty} \frac{n}{2^{n+1}} - \sum_{n=1}^{\infty}  \frac{1}{2^{n+1}} = \frac{1}{2}.
+\end{align*}
+For the second sum $\sum_{n=1}^{\infty}  \frac{1}{2^{n+1}}$, we can factor out $\frac{1}{2}$ to get $\frac{1}{2} \sum_{n=1}^{\infty} \frac{1}{2^n}$, and this is a geometric series with first term $\frac{1}{2}$ and common ratio $r=\frac{1}{2}$, then
+\begin{align*}
+    \sum_{n=1}^{\infty} \frac{1}{2^n} = \frac{\frac{1}{2}}{1 - \frac{1}{2}} = 1. 
+\end{align*}
+Thus, 
+\begin{align*}
+    \sum_{n=1}^{\infty}  \frac{1}{2^{n+1}} = \frac{1}{2} = \frac{1}{2} \cdot 1 = \frac{1}{2}. 
+\end{align*}
+From the second step we now have: 
+\begin{align*}
+    \sum_{n=1}^{\infty} \frac{n}{2^{n+1}} - \frac{1}{2} = \frac{1}{2}.
+\end{align*}
+Adding 
+\begin{align*}
+    \sum_{n=1}^{\infty} \frac{n}{2^{n+1}}  = 1.
+\end{align*}
+We know that $\sum_{n=1}^{\infty} \frac{n}{2^{n+1}} = \frac{1}{2} \sum_{n=1}^{\infty} \frac{n}{2^n}$. From previous step we know $\frac{1}{2} \sum_{n=1}^{\infty} \frac{n}{2^n} = 1$. Thus, 
+\begin{align*}
+    \sum_{n=1}^{\infty} \frac{n}{2^n} = 2. 
+\end{align*}
+
+}
+
+\end{enumerate}
+\clearpage
+
+\item (Ross 15.7)
+\begin{enumerate}
+\item Prove if $(a_n)$ is a decreasing sequence of real numbers and if $\sum
+a_n$ converges, then $\lim_{n \to \infty} n a_n=0.$ Hint: Consider $|a_{N+1}+a_{N+2}+ \cdots + a_n|$ for suitable $N$.
+
+\jg{
+Since $\sum a_n$ converges, by the Cauchy criterion, for any $\epsilon > 0$, there exists an integer $N$ such that for all $n \geq m \geq N$, it satisfies 
+\begin{align*}
+    \left| \sum_{k=m}^n a_k  \right| < \frac{\epsilon}{2}. 
+\end{align*}
+Here, since $(a_n)$ is given as decreasing non-negative, we can drop the absolute value and write this as 
+\begin{align*}
+     \sum_{k=m}^n a_k  < \frac{\epsilon}{2}. 
+\end{align*}
+In particular, we have that $n > N$ implies 
+\begin{align*}
+    a_{N+1} + \cdots + a_n < \frac{\epsilon}{2}.
+\end{align*}
+We fix $n>N$. Since $(a_n)$ is decreasing, the smallest term in the sum $a_{N+1}+a_{N+2}+ \cdots + a_n$ is $a_n$. Therefore, we can bound the sum from below: 
+\begin{align*}
+    \sum_{k=N+1}^n a_k \geq (n-N)a_n
+\end{align*}
+Combining the previous inequalities we get
+\begin{align*}
+    (n-N)a_n < \frac{\epsilon}{2}. 
+\end{align*}
+Then we can write 
+\begin{align*}
+    a_n < \frac{\epsilon}{2(n-N)}.
+\end{align*}
+Multiplying both sides by $n$ and simplifying: 
+\begin{align*}
+    n a_n < \frac{\epsilon}{2} \frac{n}{n-N}. 
+\end{align*}
+For any $n > 2N$, we have $n - N > \frac{n}{2}$. This gives  
+\begin{align*}
+    \frac{n}{n-N} < 2.
+\end{align*}
+Substituting this in gives
+\begin{align*}
+    n a_n < \frac{\epsilon}{2} \cdot 2 = \epsilon.
+\end{align*}
+Therefore, we have shown that for any $\epsilon > 0$, there exits $N$ such that for all $n > 2N$: 
+\begin{align*}
+    n a_n < \epsilon.
+\end{align*}
+Thus, this proves that $\lim_{n \rightarrow \infty} n a_n = 0$. 
+}
+
+\item Use (a) to give another proof that $\sum \frac{1}{n}$ diverges.
+
+\jg{
+From part (a), we had that $(a_n)$ is a decreasing sequence and we can observe that $\sum \frac{1}{n}$ is also decreasing since $\frac{1}{n+1} < \frac{1}{n}$ for all $n \geq 1$. We proved that if a sequence is decreasing and converges, then $\lim_{n\rightarrow \infty} n a_n = 0$. We want to use this to show that $\sum \frac{1}{n}$ diverges. Notice, if $\sum \frac{1}{n}$ converges, by part (a), we must have: 
+\begin{align*}
+    \lim_{n\rightarrow \infty} n a_n = 0. 
+\end{align*}
+Substituting $a_n = \frac{1}{n}$, 
+\begin{align*}
+    \lim_{n\rightarrow \infty} n \cdot \frac{1}{n} = \lim_{n\rightarrow \infty} 1 = 1. 
+\end{align*}
+Thus, the limit of $\sum \frac{1}{n}$ does not equal 0, which contradicts the proof in part (a). Hence, we've shown $\sum \frac{1}{n}$ diverges. 
+}
+
+
+\end{enumerate}
+\clearpage
+
+
+
+\item Let $(a_n)_{n=1}^{\infty}$ and $(b_n)_{n=1}^{\infty}$ be sequences of real
+numbers. Define the sequence
+\begin{align*}
+c_n := \sum_{k=1}^n a_kb_{n-k}.
+\end{align*}
+Prove that if $\sum_n a_n$ and $\sum_n b_n$ converge absolutely, then $\sum_n c_n$
+converges absolutely.
+
+
+\jg{
+We are given that $\sum a_n$ and $\sum b_n$ converge absolutely, which means: 
+\begin{align*}
+    \sum_{n=1}^\infty |a_n| < \infty \quad \text{and} \quad \sum_{n=1}^\infty |b_n| < \infty. 
+\end{align*}
+Our goal is to show that $\sum_{n=1}^\infty |c_n| < \infty$, \textit{i.e.,} that $\sum c_n$ converges absolutely. 
+
+For each $n$, we have 
+\begin{align*}
+    |c_n| = \left|\sum_{k=1}^n a_kb_{n-k}\right|.
+\end{align*}
+By the triangle inequality, we get
+\begin{align*}
+    |c_n| \leq \sum_{k=1}^n |a_k| \cdot |b_{n-k}|. 
+\end{align*}
+To bound $\sum_{n=1}^\infty |c_n|$ it suffices to bound $\sum_{n=1}^\infty \sum_{k=1}^n |a_k| \cdot |b_{n-k}|$. 
+
+Setting $m = n-k$, we can rewrite the sum to 
+\begin{align*}
+    \sum_{k=1}^\infty \sum_{m=1}^\infty |a_k| \cdot |b_{m}|.
+\end{align*}
+For each fixed $k$ above, $m=n-k$ ranges over all non-negative integers. We can separate this into the product of two independent sums: 
+\begin{align*}
+    \sum_{k=1}^\infty \sum_{m=1}^\infty |a_k| \cdot |b_{m}| = \left( \sum_{k=1}^\infty |a_k| \right) \left( \sum_{m=1}^\infty |b_m| \right)
+\end{align*}
+This is valid since both sums are finite by the assumption of absolute convergence. Now, since $\sum_{n=1}^\infty |a_n| < \infty$ and $\sum_{n=1}^\infty |b_n| < \infty$ their product is also finite: 
+\begin{align*}
+    \left( \sum_{k=1}^\infty |a_k| \right) \left( \sum_{m=1}^\infty |b_m| \right) < \infty.
+\end{align*}
+Therefore, it follows that:
+\begin{align*}
+    \sum_{n=1}^\infty |c_n| \leq \left( \sum_{k=1}^\infty |a_k| \right) \left( \sum_{m=1}^\infty |b_m| \right) < \infty.
+\end{align*}
+Hence, $\sum_{n=1}^\infty |c_n| < \infty$, which proves $\sum_{n=1}^\infty |c_n|$ converges absolutely. 
+}
+
+
+
+\clearpage
+\item (Ross 16.3) Suppose $\sum a_n$ and $\sum b_n$ are convergent series of nonnegative numbers. Show that if $a_n \leq b_n$ for all $n$ and if $a_n<b_n$ for at least one $n$, then $\sum a_n<\sum b_n$.
+
+\jg{
+Let $A = \sum_{n=1}^\infty$ and $B = \sum_{n=1}^\infty$. Since $\sum a_n$ and $\sum b_n$ are given as convergent series of nonnegative numbers, $A$ and $B$ are finite and nonnegative. 
+
+Given that we are seeking to show that $\sum a_n<\sum b_n$, we want to look at this new series $\sum_{n=1}^\infty (b_n - a_n)$. Since $a_n \leq b_n$ for all $n$, each term $b_n - a_n$ is nonnegative, so $b_n - a_n \geq 0$ for all $n$. We know that since $\sum a_n$ and $\sum b_n$ converge, then $\sum_{n=1}^\infty (b_n - a_n)$ converges. Also, by linearity of convergent series, we can write
+\begin{align*}
+    \sum_{n=1}^\infty (b_n - a_n) = \sum_{n=1}^\infty b_n - \sum_{n=1}^\infty  a_n = B - A. 
+\end{align*}
+Its given that there exists at least one $n$ such that $a_n < b_n$, then $b_n - a_n > 0$. This implies the sum $\sum_{n=1}^\infty (b_n - a_n)$ is strictly positive. That is, $\sum_{n=1}^\infty (b_n - a_n) > 0$. Then clearly we can write: 
+\begin{align*}
+    B - A = \sum_{n=1}^\infty (b_n - a_n) > 0. 
+\end{align*}
+Therefore, $B - A > 0$. Hence, $\sum a_n < \sum b_n$. 
+}
+
+
+
+\clearpage
+\item Let $\left(a_n\right)$ be a sequence of real numbers, and define $s_m:= \sum_{n=1}^m a_n$. For each $M$ define $\sigma_M=\frac{1}{M} \left(s_1+s_2+\cdots+s_M\right)$. Prove that if $\lim_{n \to \infty} n a_n =0$ and $(\sigma_M)$ converges, then $\sum_n a_n$ converges.
+
+\jg{
+We assume (from problem description) that $(\sigma_m)$ converges to some limit $L$ i.e., $\lim_{M\rightarrow \infty} \sigma_M = L$. 
+
+We want to show that $\sum_n a_n$ converges, i.e., $\lim_{m\rightarrow \infty} s_m$ exists. 
+
+We can express $s_M$ in terms of $\sigma_M$ as follows
+\begin{align*}
+    \sigma_M = \frac{1}{M} (s_1 + \cdots + s_M) 
+\end{align*}
+and $\sigma_{M-1}$ as 
+\begin{align*}
+    \sigma_{M-1} \frac{1}{M-1} (s_1 + \cdots + s_{M-1})
+\end{align*}
+Multiplying by $M$ and $M-1$, respectively, we get
+\begin{align*}
+    M \sigma_M = (s_1 + \cdots + s_M) \\
+    (M-1) \sigma_{M-1} = (s_1 + \cdots + s_{M-1})
+\end{align*}
+We can subtract the two equations to get
+\begin{align*}
+    M \sigma_M - (M-1)\sigma_{M-1} = s_M.
+\end{align*}
+Or rewritten,
+\begin{align*}
+    s_M = M(\sigma_M - \sigma_{M-1}) + \sigma_{M-1}. 
+\end{align*}
+Now let's look at the definition of $\sigma_M$, we have 
+\begin{align*}
+    \sigma_M - \sigma{M-1} = \frac{1}{M}(s_1 + \cdots + s_M ) - \frac{1}{M-1} (s_1 + \cdots + s_{M-1}). 
+\end{align*}
+Simplifying, 
+\begin{align*}
+    \sigma_M - \sigma_{M-1} = \frac{1}{M} s_M + \left( \frac{1}{M} - \frac{1}{M-1}\right) (s_1 + \cdots + s_{M-1}). 
+\end{align*}
+Substituting in $s_M = M(\sigma_M - \sigma_{M-1}) + \sigma_{M-1}$, 
+\begin{align*}
+    \sigma_M - \sigma_{M-1} = \frac{1}{M} (M \sigma_M - (M-1) \sigma_{M-1} ) + \left( \frac{1}{M} - \frac{1}{M-1} \right) (s_1 + \cdots + s_{M-1})
+\end{align*}
+Distributing $\frac{1}{M}$ and simplifying,
+\begin{align*}
+    \sigma_M - \sigma_{M-1} = \sigma_M - \frac{M-1}{M} \sigma_{M-1} + \left( \frac{1}{M} - \frac{1}{M-1}  \right) (s_1 + \cdots + s_{M-1}) 
+\end{align*}
+And finally this simplifies to 
+\begin{align*}
+    \sigma_M - \sigma_{M-1} = \frac{\sigma_M}{M} + \left( \frac{1}{M} - \frac{1}{M-1}  \right) (s_1 + \cdots + s_{M-1}) .
+\end{align*}
+
+Note: I tried to establish the relationship between terms in the sequence $s_M$ and the sequence $(\sigma_M)$. Started with their definitions, derived some relationship, and manipulated with the goal of finding a way to show that if $(\sigma_M)$ and $\lim_{n\rightarrow \infty} n a_n = 0$ then $s_M$ converges. I figured you could do this by showing that the difference in $s_m$ and $s_{m-1}$ then we could prove convergence. But I unfortunately started this homework late, and I do not see a clear way forward. 
+
+}
+
+\end{enumerate}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

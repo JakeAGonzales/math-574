@@ -1,0 +1,378 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% -*- LaTeX -*- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%**start of header
+\documentclass [10pt]{article}
+\usepackage{epsfig}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{xcolor}  
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{esint}
+\usepackage{mathrsfs}
+\usepackage{cancel}
+% In case you need to adjust margins:
+\topmargin=-0.45in %
+\evensidemargin=0in %
+\oddsidemargin=0in %
+\textwidth=6.5in %
+\textheight=9.0in %
+\headsep=0.25in %
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newcommand{\jg}[1]{{\color{blue} #1}}
+
+
+
+\begin{document}
+\begin{center}
+{\bf Homework Problems}\\
+Math 327, Winter 2025\\
+Due 11:30 pm, February 26, 2025
+\end{center}
+
+\begin{center}
+\jg{
+    Jake Gonzales}
+\end{center}
+
+{\bf Instructions:} Please include the full problem statement in your submission.
+All solutions must be written in legible handwriting
+or typed (in each case, the text should be of a reasonable size). Your solutions to
+all problems should be written in complete sentences, with proper grammatical
+structure.
+In all cases where external resources are consulted or used, proper citation must
+be given. In addition,
+you must provide information on collaboration with your submission: if you worked with others,
+or consulted anyone aside from the course staff, in preparing the solutions, their
+names should be
+listed; if you didn't work with anyone, please indicate this.
+If your solutions are not typed, you must scan your written solutions and submit
+the digital copy. When submitting problems through LaTex, the LaTex source file
+(.tex) must be included in the submission.
+
+\jg{
+\textbf{Collaborators: N/A }
+}
+
+\begin{enumerate}
+\item (Ross 12.13)
+Let $\left(s_n\right)$ be a bounded sequence in $\mathbb{R}$. Let $A$ be the set of
+$a \in \mathbb{R}$ such that $\left\{n \in \mathbb{N}: s_n<a\right\}$ is finite,
+i.e., all but finitely many $s_n$ are $\geq a$. Let $B$ be the set of $b \in \mathbb{R}$ such that $\left\{n \in \mathbb{N}: s_n>b\right\}$ is finite. Prove $\sup A=\liminf s_n$ and $\inf B=\limsup s_n$.
+
+\jg{
+We are given a set $A$ that consists of all real numbers $a$ such that only finitely  many terms of the sequence $(s_n)$ are less than $a$. And the set $B$ consists of all real numbers $b$ such that only finitely many terms of the sequence $(s_n)$ are greater than $b$. 
+
+We want to prove that $\sup A = \lim \inf s_n$ and $\inf B = \lim \sup s_n$. 
+
+Let's start by proving $\sup A = \lim \inf s_n$. We first want to show that $\lim \inf \leq \sup A$. Let $v_N = \inf \{s_n : n > N \}$ which is the infimum of the sequence $(s_n)$ from $N + 1$ onward where $N \in \mathbb{N}$. Since $v_N$ is the infimum of $\{s_n : n > N \}$, it follows that for $n > N$, we have $s_n \geq v_N$. So the set $\{ n \in \mathbb{N} : s_n < v_n \}$ is in the finite set $\{ 1, \cdots, N \}$. Therefore $v_N \in A$ for all $N$. Since $v_N$ is in $A$, then $v_N \leq \sup A$ for all $N$ by definition. If we take the limit as $N \rightarrow \infty$ then we have 
+\begin{align*}
+    \lim \inf s_n = \lim_{N \rightarrow \infty} v_N \leq \sup A
+\end{align*}
+Which shows that $\lim \inf s_n$ is less than or equal to $\sup A$. 
+
+Now we seek to show that $\lim \inf s_N \geq \sup A$. We know that $A$ is the set such that $\{n \in \mathbb{N} : s_n < a \}$ and it is finite. Let $N_a$ be the largest index in the finite set. Then for all $n > N_a$ we have $s_n \geq a$. Now consider again $v_N = \inf \{s_N : n > N\}$. For $N \geq N_a$, since $s_n \geq a$ for all $n > N_a$ it follows that $v_N \geq a$. Then similarly taking the limit as $N \rightarrow \infty$: 
+\begin{align*}
+    \lim \inf s_n = \lim_{N \rightarrow \infty} v_N \geq a
+\end{align*}
+And since this holds for all $a \in A$, then $\lim \inf s_n$ is an upper bound for A. Therefore $\lim \inf s_n \geq \sup A$. 
+
+Thus, we can conclude that since $\lim \inf s_n \leq \sup A$ and $\lim \inf s_n \geq \sup A$, this implies $\lim \inf s_n = \sup A$. 
+
+Now let's prove $\inf B = \limsup s_n$. We first want to show that $\limsup s_n \geq \inf B$. Let $u_N = \sup \{s_n : n > N \}$ which is the supremum of the sequence $(s_n)$ from $N + 1$ onward where $N \in \mathbb{N}$. Since $u_N$ is the supremum of $\{s_n : n > N \}$, it follows that for $n > N$, we have $s_n \leq u_N$. So the set $\{ n \in \mathbb{N} : s_n > u_N \}$ is in the finite set $\{ 1, \cdots, N \}$. Therefore $u_N \in B$ for all $N$. Since $u_N$ is in $B$, then $u_N \geq \inf B$ for all $N$ by definition. If we take the limit as $N \rightarrow \infty$ then we have 
+\begin{align*}
+    \limsup s_n = \lim_{N \rightarrow \infty} u_N \geq \inf B
+\end{align*}
+Which shows that $\limsup s_n$ is greater than or equal to $\inf B$. 
+Now we seek to show that $\limsup s_n \leq \inf B$. We know that $B$ is the set such that $\{n \in \mathbb{N} : s_n > b \}$ and it is finite. Let $N_b$ be the largest index in the finite set. Then for all $n > N_b$ we have $s_n \leq b$. Now consider again $u_N = \sup \{s_n : n > N\}$. For $N \geq N_b$, since $s_n \leq b$ for all $n > N_b$ it follows that $u_N \leq b$. Then similarly taking the limit as $N \rightarrow \infty$: 
+\begin{align*}
+    \limsup s_n = \lim_{N \rightarrow \infty} u_N \leq b
+\end{align*}
+And since this holds for all $b \in B$, then $\limsup s_n$ is a lower bound for B. Therefore $\limsup s_n \leq \inf B$. 
+Thus, we can conclude that since $\limsup s_n \geq \inf B$ and $\limsup s_n \leq \inf B$, this implies $\limsup s_n = \inf B$.
+
+}
+
+\clearpage
+\item (Ross 12.14) Calculate
+\begin{enumerate}
+\item $\lim_{n \to \infty} (n!)^{1/n}$
+
+\jg{
+Let $s_n = n!$. Compute this ratio $\left| \frac{s_{n+1}}{s_n} \right|$ as 
+\begin{align*}
+    \left| \frac{s_{n+1}}{s_n} \right| = \frac{(n+1)!}{n!} = n+1.
+\end{align*}
+Observe that as $n \rightarrow \infty$, the above ratio $\rightarrow \infty$. 
+
+By \textbf{Theorem 12.2} from the textbook, we have: 
+\begin{align*}
+    \lim \sup \left| \frac{s_{n+1}}{s_n} \right| = \infty \implies \lim \sup |s_n|^{1/n} = \infty.
+\end{align*}
+Since $(n!)^{1/n} = |s_n|^{1/n}$ we can conclude that 
+\begin{align*}
+    \lim_{n \rightarrow \infty} (n!)^{1/n} = \infty.
+\end{align*}
+}
+
+\item $\lim_{n \to \infty} \frac{1}{n}(n!)^{1/n}$
+
+\jg{
+Let $s_n = \frac{n!}{n^n}$. Then, 
+\begin{align*}
+    \frac{1}{n} (n!)^{1/n} = \left( \frac{n!}{n^n}\right)^{1/n} = |s_n|^{1/n}. 
+\end{align*}
+Let's compute the ratio $\left| \frac{s_{n+1}}{s_n} \right|$ as 
+\begin{align*}
+    \left| \frac{s_{n+1}}{s_n} \right| = \frac{(n+1)!}{(n+1)^{n+1}} \cdot \frac{n^n}{n!} = \frac{n^n}{(n+1)^n} = \left( 1 - \frac{1}{n+1}\right)^n. 
+\end{align*}
+As $n \rightarrow \infty$, this ratio $\rightarrow e^{-1}$. We know this because a well-used example from the book, $(1+\frac{1}{n})^n$ has been shown to converge to $e$ for large $n$, and this is the inverse. 
+By \textbf{Corollary 12.3}, we have 
+\begin{align*}
+    \lim_{n \rightarrow \infty} \left| \frac{s_{n+1}}{s_n} \right|  = \frac{1}{e} \implies \lim |s_n|^{1/n} = \frac{1}{e}. 
+\end{align*}
+Thus, $\lim_{n \to \infty} \frac{1}{n}(n!)^{1/n} = \frac{1}{e}$.
+}
+
+\end{enumerate}
+
+
+\clearpage
+\item (Ross 14.6)
+\begin{enumerate}
+\item Prove that if $\sum\left|a_n\right|$ converges and $\left(b_n\right)$ is
+a bounded sequence, then $\sum a_n b_n$ converges. Hint: Use Theorem 14.4.
+
+\jg{
+First let's recall the Cauchy criterion. A series $\sum c_n$ satisfies the Cauchy criterion if for every $\epsilon > 0$, there exists a number $N$ such that for all $n \geq m > N$, 
+\begin{align*}
+    \left| \sum_{k=m}^n c_k \right| < \epsilon.
+\end{align*}
+By \textbf{Theorem 14.4}, a series converges if and only if it satisfies the Cauchy criterion. 
+
+Now, since $\sum\left|a_n\right|$ converges, it satisfies the Cauchy criterion. Therefore, we can say that for every $\epsilon > 0$, there exists a number $N$ such that for al $n \geq m > N$,
+\begin{align*}
+    \left| \sum_{k=m}^n a_k \right| < \epsilon.
+\end{align*}
+Since $(b_n)$ is bounded, by definition, there exists an $M > 0$ such that $\left| b_n \right| \leq M$ for all $n$. We want to show that $\sum a_n b_n $ satisfies the Cauchy criterion \emph{i.e.,} for $\epsilon > 0$ there exists an $N$ such that for all $n \geq m > N$
+\begin{align*}
+    \left| \sum_{k=m}^n a_k b_k \right| < \epsilon.
+\end{align*}
+Using the triangle inequality and the fact that $(b_n)$ is bounded we get
+\begin{align*}
+    \left| \sum_{k=m}^n a_k b_k \right| \leq \left| \sum_{k=m}^n a_k b_k \right| \leq M \sum_{k=m}^n \left| a_k \right|. 
+\end{align*}
+Since $\sum \left| a_n \right|$ satisfies the Cauchy criterion, for some $\epsilon > 0$, there exists $N$ such that $n \geq m > N$,
+\begin{align*}
+    \sum_{k=m}^n \left| a_k \right| < \frac{\epsilon}{M}.
+\end{align*}
+Combining the two inequalities, it follows that 
+\begin{align*}
+    \sum_{k=m}^n \left| a_k \right| < M \cdot \frac{\epsilon}{M} = \epsilon.
+\end{align*}
+Thus, $\sum a_n b_n$ satisfies the Cauchy criterion. Hence by theorem 14.4, it converges.
+}
+
+\item Observe that Corollary 14.7 is a special case of part (a).
+
+\jg{
+\textbf{Corollary 14.7} from the textbook states that absolutely convergent series are convergent. This would be a special case of part (a) where the sequence $(b_n)$ is taken to be the constant sequence $b_n = 1$ for all $n$. So in this case $\sum \left|a_n \right |$ converges by definition of absolute convergence. And $(b_n)$ is bounded since its constant. Therefore, by part (a), $\sum a_n b_n = \sum a_n$ converges. 
+}
+
+\end{enumerate}
+
+
+\clearpage
+\item Suppose $a_n>0, s_n=a_1+\cdots+a_n$, and $\Sigma a_n$ diverges.
+\begin{enumerate}
+\item Prove that $\sum \frac{a_n}{1+a_n}$ diverges.
+
+\jg{
+We don't get any information on whether $a_n$ is bounded, just that $\sum a_n$ diverges with $a_n > 0$. Therefore, we consider two cases: where $\lim \sup a_n = \infty$ and $a_n$ being bounded. 
+
+\textbf{Case (i):} Assume $\lim \sup a_n = \infty$. Then there exists a subsequence $a_{n_k} \rightarrow \infty$. Then 
+\begin{align*}
+    \frac{a_{n_k}}{1+a_{n_k}} = \frac{1}{\frac{1}{a_{n_k}} + 1} \rightarrow 1 \quad \text{as} \quad k \rightarrow \infty.
+\end{align*}
+Since the terms $\frac{a_{n_k}}{1+a_{n_k}}$ do not approach $0$, the series $\sum \frac{a_n}{1+a_n}$  diverges. (This is because for a series $\sum s_n$ to converge, a necessary condition is that $\lim_{n \rightarrow \infty} s_n = 0$). 
+
+\textbf{Case (ii):} Assume $a_n$ is bounded. Therefore, there exists $M>0$ where $a_n \leq M$ for all $n$. Then we can write 
+\begin{align*}
+    \frac{a_n}{1+a_n} \geq \frac{a_n}{1+M} . 
+\end{align*}
+Since $\sum \frac{a_n}{1+M}$ diverges (since $\sum a_n$) diverges, by the \textbf{14.2 comparison test (ii)} from the textbook, $\sum \frac{a_n}{1 + a_n}$ also diverges. 
+
+Hence, we've shown that in either case $\sum \frac{a_n}{1+a_n}$ diverges.
+}
+
+\item Prove that
+$$
+\frac{a_{N+1}}{s_{N+1}}+\cdots+\frac{a_{N+k}}{s_{N+k}} \geq 1-\frac{s_N}{s_{N+k}}
+$$
+and deduce that $\sum \frac{a_n}{s_n}$ diverges.
+
+\jg{
+We will prove this by induction. Consider the base case $k=1$, where the left hand side is $\frac{a_{N+1}}{s_{N+1}}$ and the left hand side is $1-\frac{s_N}{s_{N+1}}$. Since $s_{N+1} = s_N + a_{N+1}$ we have 
+\begin{align*}
+    1 - \frac{s_N}{s_{N+1}} = \frac{a_{N+1}}{s_{N+1}}
+\end{align*}
+Thus this holds for the base case. Now for the inductive step, we assume this holds for $k$, i.e. 
+\begin{align*}
+    \sum_{i=1}^k \frac{a_{N+i}}{s_{N+i}} \geq 1 - \frac{s_N}{s_{N+k}}.
+\end{align*}
+For $k+1$, we add $\frac{a_{N+k+1}}{s_{N+k+1}}$ to both sides to get
+\begin{align*}
+    \sum_{i=1}^{k+1} \frac{a_{N+1}}{s_{N+i}} \geq 1 - \frac{s_N}{s_{N+k}} + \frac{a_{N+k+1}}{s_{N+k+1}}.  
+\end{align*}
+Now since $s_{N + k + 1} = s_{N+k} + a_{N+k+1} \geq s_{N+k}$ we have
+\begin{align*}
+    1 - \frac{s_N}{s_{N+k}} + \frac{a_{N+k+1}}{s_{N+k+1}} \geq 1 - \frac{s_N}{s_{N+k+1}}.
+\end{align*}
+Thus by mathematical induction, we've proved that $\frac{a_{N+1}}{s_{N+1}}+\cdots+\frac{a_{N+k}}{s_{N+k}} \geq 1-\frac{s_N}{s_{N+k}}$. 
+
+Let us now suppose $\sum a_n$ \emph{converges}. Then by the Cauchy criterion, for $\epsilon = \frac{1}{2}$ there exists $N$ such that for all $k \geq 1$
+\begin{align*}
+    \sum_{i=N+1}^{N+k} \frac{a_i}{s_i} < \frac{1}{2}. 
+\end{align*}
+However, since $\sum a_n$ diverges, $s_{N+k} \rightarrow \infty$ as $k \rightarrow \infty$. So choose $k$ large enough so that $s_{N+k} \geq 2_{s_N}$. Then using the inequality above
+\begin{align*}
+    \sum_{i=N+1}^{N+k} \frac{a_i}{s_i} \geq 1 - \frac{s_N}{s_{N+k}} \geq 1 - \frac{1}{2} = \frac{1}{2}. 
+\end{align*}
+This contradicts $\epsilon < \frac{1}{2}$. Hence, $\sum \frac{a_n}{s_n}$ diverges.
+}
+
+\item Prove that
+$$
+\frac{a_n}{s_n^2} \leq \frac{1}{s_{n-1}}-\frac{1}{s_n}
+$$
+and deduce that $\sum \frac{a_n}{s_n^2}$ converges.
+
+\jg{
+Since $s_n = s_{n-1} + a_n$ we have 
+\begin{align*}
+    \frac{1}{s_{n-1}} - \frac{1}{s_n} = \frac{s_n - s_{n-1}}{s_{n-1}s_n}. 
+\end{align*}
+Observe that $s_n \geq s_{n-1}$, so then $s_{n-1} s_n \leq s_n^2$. Therefore, 
+\begin{align*}
+    \frac{a_n}{s_n^2} \leq \frac{a_n}{s_{n-1} s_n} = \frac{1}{s_{n-1}} - \frac{1}{s_n}. 
+\end{align*}
+Now, consider the inequality from $n=2$ to $n=m$: 
+\begin{align*}
+    \sum_{n=2}^m \frac{a_n}{s_n^2} \leq \sum_{n=2}^m  \left( \frac{1}{s_{n-1}} - \frac{1}{s_n} \right).
+\end{align*}
+Simplifying the right hand side
+\begin{align*}
+    \sum_{n=2}^m \frac{a_n}{s_n^2} \leq  \sum_{n=2}^m  \left( \frac{1}{s_{n-1}} - \frac{1}{s_n} \right) = \frac{1}{s_1} - \frac{1}{s_m}
+\end{align*}
+Since $\sum a_n$ diverges, $s_m \rightarrow \infty$, so $\frac{1}{s_m} \rightarrow 0$. Thus, 
+\begin{align*}
+    \sum_{n=2}^\infty \frac{a_n}{s_n^2} \leq \frac{1}{s_1}
+\end{align*}
+and adding the $n=1$ term (some finite value), the series is bounded. Hence, by the comparison test the series converges. 
+}
+
+
+
+\end{enumerate}
+
+
+\clearpage
+\item Suppose $a_n>0$ and $\Sigma a_n$ converges. Put
+$$
+r_n=\sum_{m=n}^{\infty} a_m .
+$$
+\begin{enumerate}
+\item Prove that
+$$
+\frac{a_m}{r_m}+\cdots+\frac{a_n}{r_n}>1-\frac{r_n}{r_m} $$
+if $m<n$, and deduce that $\sum \frac{a_n}{r_n}$ diverges.
+
+\jg{
+Since we are given $r_k = \sum_{i=k}^\infty a_i$, we can write $r_k = a_k + r_{k+1}$. This implies 
+\begin{align*}
+    \frac{a_k}{r_k} = 1 - \frac{r_{k+1}}{r_k}. 
+\end{align*}
+Let's now rewrite the sum that was given as $S = \frac{a_m}{r_m}+\cdots+\frac{a_n}{r_n}>1-\frac{r_n}{r_m}$ and from this we have
+\begin{align*}
+    S = \left( 1 - \frac{r_{m+1}}{r_m}\right) + \left( 1 - \frac{r_{m+2}}{r_{m+1}}\right) + \cdots + \left( 1 - \frac{r_{n+1}}{r_n} \right). 
+\end{align*}
+The sum can be further simplified and written as 
+\begin{align*}
+    S = (n - m + 1) - \left(\frac{r_{m+1}}{r_m} + \frac{r_{m+1}}{r_{m+1}} + \cdots + \frac{r_{n+1}}{r_n}\right)
+\end{align*}
+Since $r_{k+1} < r_k$ for all $k$, each term $\frac{r_{k+1}}{r_k} < 1$. Therefore,
+\begin{align*}
+    S > (n - m + 1) - (n - m + 1) \cdot \frac{r_n}{r_m}. 
+\end{align*}
+Since $(n-m+1) \geq 1$ we have 
+\begin{align*}
+    S > 1 - \frac{r_n}{r_m}. 
+\end{align*}
+Thus we have proven $\frac{a_m}{r_m}+\cdots+\frac{a_n}{r_n}>1-\frac{r_n}{r_m} $ if $m < n$. 
+
+We want to show that $\sum \frac{a_n}{r_n}$ diverges. To show this, we will apply the Cauchy criterion. Since $\sum a_n$ converges, $r_n \rightarrow 0$ as $n \rightarrow \infty$. Thus for any fixed $m$, $\frac{r_n}{r_m} \rightarrow 0$ as $n \rightarrow \infty$ . This means that
+\begin{align*}
+    \sum_{k=m}^n \frac{a_k}{r_k} > 1 - \epsilon
+\end{align*}
+for large $n$. Thus, the Cauchy criterion is satisfied with $\epsilon = 1$ so $\sum \frac{a_n}{r_n}$ diverges. 
+
+}
+
+\item Prove that
+$$
+\frac{a_n}{\sqrt{r_n}}<2\left(\sqrt{r_n}-\sqrt{r_{n+1}}\right)
+$$
+and deduce that $\sum \frac{a_n}{\sqrt{r_n}}$ converges.
+
+
+\jg{
+We can again write $a_n$ in terms of $r$. So since we have $r_n = a_n + r_{n+1}$, we can write $a_n = r_n - r_{n+1}$. If we substitute this into the inequality above: 
+\begin{align*}
+    \frac{r_n - r_{n+1}}{\sqrt{r_n}} < 2 \left( \sqrt{r_n} - \sqrt{r_{n+1}} \right).
+\end{align*}
+Dividing both sides by $\sqrt{r_n}$
+\begin{align*}
+    \frac{r_n - r_{n+1}}{r_n} < 2 \left( 1- \frac{\sqrt{r_{n+1}}}{\sqrt{r_n}} \right)
+\end{align*}
+The left hand side simplifies to $1- \frac{r_{n+1}}{r_n}$. For notational convenience, let let $x = \frac{\sqrt{r_{n+1}}}{\sqrt{r_n}}$, since $r_{n+1} < r_n$ we have that $x$ must be in between $0 < x < 1$. So let's rewrite the inequality 
+\begin{align*}
+    1-x^2 < 2(1-x).
+\end{align*}
+Rearranging gives $x^2 - 2x+1 > 0$ and further $(x-1)^2 > 0$. This is true for all $x = 1$, but since $0 < x < 1$ we can conclude that the inequality holds. 
+
+We will now apply the comparison test. Let's sum both sides of the inequality that we just proved to hold to get: 
+\begin{align*}
+    \sum_{n=1}^N \frac{a_n}{\sqrt{r_n}} < 2 \sum_{n=1}^N \left(\sqrt{r_n}-\sqrt{r_{n+1}}\right)
+\end{align*}
+The right hand side is $2(\sqrt{r_1} - \sqrt{r_{N+1}})$. Since $r_{N+1} \rightarrow 0$ as $N \rightarrow \infty$, the right hand side converges to $2 \sqrt{r_1}$. This shows that $\sum \frac{a_n}{\sqrt{r_n}}$ is bounded above by $2 \sqrt{r_1}$. Hence by the comparison test the series converges. 
+}
+
+
+\end{enumerate}
+\end{enumerate}
+
+\clearpage
+\begin{center}
+\vspace*{\fill}
+{\Large End of Homework}
+\vspace*{\fill}
+\end{center}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
